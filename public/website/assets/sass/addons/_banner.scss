@@ -1,0 +1,29 @@
+.home-banner{
+  padding: 170px 0 100px;
+  @media #{$max991} {
+    padding: 40px 0 0;
+    text-align: center;
+  }
+
+  h1{
+    line-height: 81px;
+    color: #313135;
+
+    @media #{$max991} {
+      font-size: 42px;
+      line-height: 56px;
+    }
+  }
+
+  p{
+    margin-bottom: 40px;
+  }
+
+  .btn-default{
+    padding: 0 55px;
+
+    @media #{$max991} {
+      margin-bottom: 40px;
+    }
+  }
+}

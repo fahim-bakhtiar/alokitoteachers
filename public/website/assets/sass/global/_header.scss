@@ -1,0 +1,279 @@
+/*========================================
+   03. Header CSS
+========================================*/
+header.header {
+  padding: 18px 0;
+  z-index: 9;
+  position: relative;
+
+  &.with-shadow{
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
+  }
+
+  @media #{$max991} {
+    background-color: $p_color;
+    padding: 6px 0;
+
+    .header-logo {
+      background: #FFFFFF;
+      border-radius: 8px;
+      padding: 4px 6px;
+    }
+
+    .primary-menu {
+      display: none !important;
+    }
+  }
+
+  ul.main-menu {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+
+    & > li {
+      padding: 0 13px;
+
+      & > a {
+        color: $text_wine;
+        display: inline-block;
+        position: relative;
+        min-width: 100px;
+        text-align: center;
+      }
+
+      &:hover,
+      &.active {
+        & > a {
+          color: $secondary_cobalt;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  .btn-default {
+    padding: 0 16px;
+    min-width: 168px;
+
+    @media #{$max991} {
+      display: none;
+    }
+  }
+
+  .header-user {
+    position: relative;
+
+    @media #{$max991} {
+      display: none;
+    }
+
+    .user-btn {
+      @include flexbox();
+      @include align-items(center);
+      padding: 7px 24px 7px 16px;
+      border: 1px solid #AEAFF7;
+      border-radius: 8px;
+
+      .avatar {
+        border: 1px solid #F29C1F;
+        height: 24px;
+        width: 24px;
+        line-height: 22px;
+        border-radius: 100%;
+        margin-right: 16px;
+        text-align: center;
+      }
+
+      span {
+        color: $text_wine;
+        font-weight: 600;
+      }
+    }
+
+    .user-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: 100%;
+      list-style: none;
+      margin-bottom: 0;
+      background: #FFFFFF;
+      box-shadow: 0 20px 36px -8px rgba(14, 14, 44, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.05);
+      border-radius: 8px;
+      padding: 7px 0 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease-in-out;
+
+      li {
+        a{
+          padding: 8px 16px;
+          display: block;
+          color: $text_wine;
+
+          svg{
+            margin-right: 16px;
+          }
+
+          &:hover{
+            background: #F5F5F5;
+          }
+        }
+      }
+    }
+
+    &:hover {
+      .user-btn{
+        background-color: #EFEFFD;
+      }
+      .user-dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0px);
+      }
+    }
+  }
+}
+
+.nav-icon {
+  display: block;
+  margin-left: 30px;
+  cursor: pointer;
+
+  @media #{$min992} {
+    display: none;
+  }
+
+  .menu-icon {
+    @include flexbox();
+    @include flex-direction(column);
+
+    span {
+      background: $text_wine;
+      height: 2px;
+      width: 30px;
+      margin-left: auto;
+      display: inline-block;
+
+      &:nth-child(2) {
+        width: 20px;
+        margin: 7px 0 7px auto;
+      }
+
+      &:nth-child(3) {
+        width: 25px;
+        margin-left: auto;
+      }
+    }
+  }
+}
+
+
+header.nav-open .mobile-menu-main {
+  position: fixed;
+  height: 100%;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, .5);
+  @include transition();
+}
+
+.header .mobile-menu {
+  position: fixed;
+  top: 0;
+  left: -350px;
+  width: 320px;
+  height: 100vh;
+  background: #fff;
+  z-index: 9999;
+  overflow: hidden;
+  @include transition(all, .5s);
+
+  .nav-close {
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+    z-index: 2;
+    color: $p_color;
+    cursor: pointer;
+    margin-left: auto;
+    @include transition(all, .3s);
+
+    i {
+      font-size: 26px;
+    }
+
+    &:hover {
+      background: $secondary_cobalt;
+
+      i {
+        color: #fff;
+      }
+    }
+
+  }
+
+  .mobile-menu-card {
+    padding: 20px 16px 40px;
+    overflow-y: auto;
+    height: calc(100vh - 40px);
+  }
+
+  .mobile-menu-body {
+    padding-top: 30px;
+  }
+
+  .mobile-logo {
+    display: block;
+
+  }
+
+  & ul.main-menu {
+    margin: 0;
+    list-style: none;
+
+    & li {
+      padding: 0;
+
+      & a {
+        color: $text_wine;
+        display: block;
+        padding: 16px 8px;
+        min-width: auto;
+        text-align: left;
+        border-bottom: 1px solid $p_color;
+      }
+    }
+  }
+
+  @media #{$max991} {
+    .btn-default {
+      margin-top: 64px;
+      display: block;
+      width: 100%;
+    }
+
+    .header-user{
+      display: block;
+      margin-top: 16px;
+    }
+  }
+}
+
+.header.nav-open .mobile-menu {
+  left: 0;
+}
+
+
+
+
+
+
+
+
+
+

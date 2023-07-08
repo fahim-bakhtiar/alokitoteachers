@@ -1,0 +1,59 @@
+.course-single {
+  background-color: $accent_blush;
+  padding: 64px 0;
+
+  .course-left-card {
+    margin-bottom: 36px;
+
+    h4 {
+      margin-bottom: 24px;
+      font-weight: 600;
+    }
+  }
+
+  .course-lesions {
+    ul {
+      list-style: none;
+      padding-left: 16px;
+      margin-bottom: 0;
+
+      li {
+        margin-bottom: 16px;
+
+        a {
+          color: $text_wine;
+          @include flexbox();
+        }
+
+        img {
+          width: 24px;
+          height: 24px;
+          margin-right: 16px;
+        }
+
+        &:hover {
+          a {
+            color: $p_color;
+          }
+        }
+      }
+    }
+  }
+
+  .course-nav {
+    margin-bottom: 40px;
+
+    .btn-default {
+      font-size: 12px;
+      padding: 2px 4px 2px 8px;
+      width: 72px;
+      height: 24px;
+      border-radius: 4px;
+      min-width: auto;
+    }
+  }
+
+  .plyr {
+    margin-bottom: 60px;
+  }
+}

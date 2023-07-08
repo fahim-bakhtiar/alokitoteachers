@@ -1,0 +1,61 @@
+.partner-section {
+  padding: 84px 0 144px 0;
+  @media #{$max767} {
+    text-align: center;
+  }
+
+  .section-title {
+    font-weight: 400;
+    margin-bottom: 24px;
+
+    @media #{$max767} {
+      font-weight: 500;
+      font-size: 30px;
+      line-height: 51px;
+      margin-bottom: 10px;
+    }
+  }
+
+  .partner-logo img{
+    @media #{$max767} {
+      margin: 0 auto;
+    }
+  }
+}
+
+.slick-dots {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: -70px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+
+  li {
+    margin: 0 13px;
+    width: auto;
+    display: inline-block;
+
+    button {
+      display: inline-block;
+      padding: 0;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      float: left;
+      background-color: $accent_blush;
+      color: $accent_blush;
+      border: 1px solid $p_color;
+      overflow: hidden;
+      @include transition(all .2s linear);
+    }
+
+    &.slick-active {
+      button {
+        background-color: $p_color;
+        color: $p_color;
+      }
+    }
+  }
+}

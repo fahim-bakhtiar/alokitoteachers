@@ -1,0 +1,481 @@
+.workshop-section {
+  padding-top: 64px;
+  background-color: #EFF3F6;
+
+  &.light-bg {
+    background-color: rgba(252, 233, 204, 0.65);
+  }
+
+  @media #{$max991} {
+    text-align: center;
+    padding-bottom: 64px;
+
+    .workshop-content {
+      margin-bottom: 40px;
+    }
+  }
+
+  h2 {
+    line-height: 61px;
+    font-weight: 400;
+    margin-bottom: 10px;
+
+    @media #{$max575} {
+      font-size: 30px;
+      line-height: 50px;
+    }
+  }
+
+  &.looking-job {
+    @media #{$max767} {
+      padding-top: 30px !important;
+    }
+  }
+}
+
+.mentorship-section {
+  background-color: $primary_sunshine_2;
+
+  @media #{$max767} {
+    background-color: $p_color;
+    padding-top: 64px !important;
+
+    .btn-default.btn-white {
+      background-color: #fff;
+      color: $p_color;
+    }
+  }
+}
+
+.upcoming-workshop {
+  background-color: #fff;
+  padding: 40px 0 0;
+
+  .upcoming-workshop-item {
+    background-image: url("../images/upcoming-workshop.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 16px;
+    padding: 24px 33px;
+    position: relative;
+    z-index: 2;
+
+    &::before {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
+      z-index: -1;
+    }
+
+    .upcoming-workshop-top {
+      @include flexbox();
+      @include justify-content(space-between);
+      @include align-items(flex-start);
+      margin-bottom: 33px;
+
+      @media #{$max575} {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .date {
+        background: rgba(0, 0, 0, 0.65);
+        padding: 4px 40px;
+        border: 1px solid #FFFFFF;
+        border-radius: 4px;
+        color: #fff;
+
+        @media #{$max575} {
+          margin-bottom: 20px;
+        }
+      }
+
+      .price {
+        background: rgba(0, 0, 0, 0.65);
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 36px;
+        line-height: 51px;
+        padding: 4px 31px;
+        color: #fff;
+      }
+    }
+
+    .workshop-ratting {
+      list-style: none;
+      @include flexbox();
+      margin: 0;
+      padding: 0;
+
+      li {
+        margin-right: 4px;
+        line-height: 16px;
+
+        i {
+          color: $primary_sunshine_2;
+        }
+      }
+    }
+
+    .author {
+      color: #fff;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 20px;
+      letter-spacing: 0.02em;
+    }
+
+    .uw-footer {
+      @include flexbox();
+      @include align-items(flex-end);
+      @include justify-content(space-between);
+      gap: 50px;
+
+      @media #{$max767} {
+        @include flex-wrap(wrap);
+      }
+
+      .btn-default {
+        min-width: 240px;
+      }
+    }
+
+    h3 {
+      font-weight: 600;
+      font-size: 26px;
+      line-height: 44px;
+      color: #FFFFFF;
+    }
+  }
+}
+
+.upcoming-workshop-header {
+  .btn {
+
+  }
+}
+
+.course-choose.with-border {
+  margin: 60px 0;
+  border-width: 1px 0;
+  border-style: solid;
+  border-color: rgba(14, 14, 44, 0.1);
+
+  @media #{$max767} {
+    border: none;
+  }
+}
+
+.workshop-section.light-bg {
+  .btn-secondary {
+    i {
+      @include transition();
+    }
+
+    &:hover {
+      background-color: transparent;
+      color: $p_color;
+
+      i {
+        color: $p_color;
+        margin-left: 12px;
+      }
+    }
+  }
+}
+
+.ready-workshop {
+  padding: 64px 0;
+}
+
+.workshop-item {
+  background: #EFF3F6;
+  border: 1px solid rgba(14, 14, 44, 0.1);
+  border-radius: 250px 16px 16px 250px;
+  @include flexbox();
+  @include align-items(center);
+  margin-bottom: 36px;
+  
+  @media #{$max991} {
+    @include flex-wrap();
+    border-radius: 16px;
+    padding: 16px;
+    @include justify-content(center);
+  }
+
+  .workshop-thumb {
+    border-radius: 100%;
+    margin-right: 67px;
+    @include flex(0 0 250px);
+    @media #{$max991} {
+      margin-right: 0;
+      margin-bottom: 16px;
+    }
+  }
+
+  .workshop-content {
+    padding: 20px 20px 30px 0;
+  }
+
+  .workshop-top {
+    @include flexbox();
+    @include justify-content(space-between);
+    @include align-items(center);
+    margin-bottom: 20px;
+
+    .date {
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 20px;
+      letter-spacing: 0.02em;
+      padding: 4px 10px;
+      border: 1px solid #532437;
+      border-radius: 4px;
+    }
+
+    .workshop-ratting {
+      list-style: none;
+      @include flexbox();
+      margin: 0;
+      padding: 0;
+
+      li {
+        margin-right: 4px;
+        line-height: 16px;
+
+        i {
+          color: $primary_sunshine_2;
+        }
+      }
+    }
+  }
+
+  .author {
+    color: rgba(83, 36, 55, 0.65);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0.02em;
+  }
+
+  h6 {
+    font-weight: 600;
+    margin-bottom: 36px;
+  }
+
+  .workshop-footer {
+    @include flexbox();
+    @include align-items(flex-end);
+    @include justify-content(space-between);
+    gap: 50px;
+
+    @media #{$max375} {
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .price {
+      font-weight: 600;
+      font-size: 26px;
+      line-height: 44px;
+      color: #4B4DED;
+    }
+
+    .btn-default {
+      min-width: 240px;
+    }
+  }
+
+}
+
+.attended-workshop {
+  padding: 8px;
+  border: 1px solid rgba(14, 14, 44, 0.1);
+  border-radius: 8px;
+  @include flexbox();
+  margin-bottom: 24px;
+
+  .progress {
+    @include flex(0 0 48px);
+    @include justify-content(center);
+    background: #F8BD67;
+    border-radius: 8px;
+    height: 48px;
+    width: 48px;
+    line-height: 48px;
+    text-align: center;
+    margin-right: 12px;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+  }
+
+  h6 {
+    line-height: 27px;
+  }
+
+  .date {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0.02em;
+    color: rgba(83, 36, 55, 0.65);
+  }
+}
+
+.workshop-registration-section {
+  .workshop-registration-header {
+    padding: 32px 0;
+    box-shadow: 0px 10px 4px rgba(0, 0, 0, 0.01), 0px 5px 3px rgba(0, 0, 0, 0.05), 0px 1px 1px rgba(0, 0, 0, 0.1);
+    position: relative;
+
+    .workshop-registration-header-inner {
+      @include flexbox();
+      @include justify-content(space-between);
+
+      @media #{$max991} {
+        .btn-default-wrapper{
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          padding: 15px;
+          background-color: #532437;
+          z-index: 9999;
+
+          .btn-default{
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  .edit-form {
+    padding: 30px 0;
+
+    .edit-card {
+      padding: 16px 16px 20px;
+      background: #FFFFFF;
+      border: 1px solid rgba(14, 14, 44, 0.1);
+      border-radius: 16px;
+      margin-bottom: 36px;
+
+      .card-header {
+        margin-bottom: 40px;
+
+        img {
+          margin-right: 24px;
+        }
+      }
+
+      label {
+        letter-spacing: 0.02em;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 20px;
+      }
+
+      input:disabled {
+        border: 1px solid rgba(152, 152, 171, 0.65);
+        color: rgba(152, 152, 171, 0.65);
+        background-image: url('../images/icons/disabled-icon.png');
+        background-repeat: no-repeat;
+        background-position: 96% 50%;
+      }
+
+      .error-message {
+        display: none;
+      }
+
+      .form-error {
+        input {
+          border: 1px solid #BA1A1A;
+          box-shadow: 0 0 0 2px #FDC5EA;
+          background-image: url('../images/icons/error.png');
+          background-repeat: no-repeat;
+          background-position: 96% 50%;
+        }
+
+        .error-message {
+          display: block;
+          font-weight: 500;
+          font-size: 10px;
+          line-height: 17px;
+          letter-spacing: 0.02em;
+          color: #BA1A1A;
+        }
+      }
+
+      .form-valid {
+        input {
+          border: 1px solid #23D160;
+          background-image: url('../images/icons/green-circle-check.svg');
+          background-repeat: no-repeat;
+          background-position: 96% 50%;
+          background-size: 24px;
+        }
+      }
+    }
+  }
+
+  .avatar-upload {
+    position: relative;
+
+    .avatar-edit {
+      input {
+        display: none;
+
+        + label {
+          cursor: pointer;
+        }
+      }
+
+      .remove-image {
+        cursor: pointer;
+        color: $p_color;
+
+        svg {
+          margin-right: 8px;
+        }
+      }
+    }
+
+    .avatar-preview {
+      width: 114px;
+      height: 114px;
+      position: relative;
+      border-radius: 100%;
+      background-color: $helper_text_ash;
+      margin-right: 48px;
+
+      > div {
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+    }
+  }
+}
+
+.others-card {
+  @include flexbox();
+  @include flex-direction(column);
+  @include justify-content(space-between);
+  min-height: 300px;
+  border-right: 1px solid rgba(14, 14, 44, 0.25);
+
+  @media #{$max991} {
+    min-height: auto;
+  }
+}

@@ -1,0 +1,116 @@
+.worksheet-section {
+  padding: 104px 0;
+
+  @media #{$max575} {
+    padding: 64px 0;
+    .container {
+      padding: 0;
+    }
+  }
+}
+
+.worksheet-section-inner {
+  margin: 0 60px;
+  padding: 36px;
+  background: #EFEFFD;
+  border: 1px solid rgba(14, 14, 44, 0.1);
+  border-radius: 32px;
+
+  @media #{$max991} {
+    margin: 0;
+  }
+  @media #{$max575} {
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    padding: 0 36px;
+  }
+
+  .worksheet-left-content {
+    text-align: right;
+    @media #{$max991} {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    img {
+      margin-bottom: 72px;
+      @media #{$max991} {
+        display: none;
+      }
+    }
+
+    h2 {
+      font-weight: 400;
+      line-height: 61px;
+      margin-bottom: 14px;
+
+      @media #{$max575} {
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 51px;
+      }
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+
+  }
+
+  .worksheet-form {
+    label {
+      display: block;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .ic-btn-group {
+      margin-top: 40px;
+      @media #{$max991} {
+        @include justify-content(center);
+      }
+
+      .btn {
+        min-width: 120px;
+        height: 43px;
+        border: 1px solid #F29C1F;
+        border-radius: 8px;
+
+        svg {
+          height: 43px;
+          margin-right: 12px;
+        }
+
+        &:first-child {
+          padding: 0 16px 0 8px;
+          @media #{$max575} {
+            display: none;
+          }
+
+          &:hover svg path {
+            fill: #fff;
+          }
+        }
+
+        &:last-child {
+          padding: 0 8px 0 16px;
+          @media #{$max575} {
+            width: 100%;
+          }
+
+          svg {
+            margin-left: 12px;
+            margin-right: 0;
+          }
+
+          &:hover svg path {
+            fill: $p_color;
+          }
+        }
+      }
+    }
+  }
+}

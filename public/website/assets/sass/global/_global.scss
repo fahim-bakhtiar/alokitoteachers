@@ -1,0 +1,395 @@
+/*========================================
+   02. Theme Default CSS
+========================================*/
+
+
+/* ========== 2.3. Space CSS =========== */
+.p-64 {
+  padding: 64px 0 !important;
+}
+
+.p-100 {
+  padding: 100px 0;
+}
+
+.p-80 {
+  padding: 80px 0;
+}
+
+.p-60 {
+  padding: 60px 0;
+}
+
+.p-40 {
+  padding: 40px 0;
+}
+
+.p-20 {
+  padding: 20px 0;
+}
+
+.pt-120 {
+  padding-top: 120px;
+}
+.pt-60 {
+  padding-top: 60px;
+}
+
+.pb-120 {
+  padding-bottom: 120px;
+}
+.pb-60 {
+  padding-bottom: 60px;
+}
+
+.m-100 {
+  margin: 100px 0;
+}
+
+.m-80 {
+  margin: 80px 0;
+}
+
+.m-60 {
+  margin: 60px 0;
+}
+
+.m-40 {
+  margin: 40px 0;
+}
+
+.m-20 {
+  margin: 20px 0;
+}
+
+.mt-80 {
+  margin-top: 80px;
+}
+
+.mt-60 {
+  margin-top: 60px;
+}
+
+.mt-40 {
+  margin-top: 40px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mb-80 {
+  margin-bottom: 80px;
+}
+
+.mb-60 {
+  margin-bottom: 60px !important;
+}
+.mb-40 {
+  margin-bottom: 40px !important;
+}
+
+.mb-30 {
+  margin-bottom: 30px !important;
+}
+
+.mb-20 {
+  margin-bottom: 20px !important;
+}
+.mb-10 {
+  margin-bottom: 10px !important;
+}
+
+/* Font Weight */
+.fw-400 {
+  font-weight: 400;
+}
+
+.fw-500 {
+  font-weight: 500;
+}
+
+.fw-600 {
+  font-weight: 600;
+}
+
+.fw-700 {
+  font-weight: 700;
+}
+
+
+/* ========== 2.4. Button CSS =========== */
+.btn-default {
+  font-size: 16px;
+  color: $text_wine;
+  display: inline-flex;
+  @include align-items(center);
+  @include justify-content(center);
+  padding: 0 42px;
+  height: 45px;
+  line-height: 44px;
+  min-width: 160px;
+  border: 1px solid $primary_sunshine_2;
+  background-color: $primary_sunshine_2;
+  @include transition();
+  font-weight: 600;
+  outline: none;
+  border-radius: 8px;
+
+  i, svg {
+    margin-left: 8px;
+  }
+
+  &.btn-icon-left {
+    i, svg {
+      margin-right: 8px;
+    }
+  }
+
+  &:hover {
+    background-color: transparent;
+    border: 1px solid $p_color;
+    color: $p_color;
+
+    i {
+      color: $p_color;
+    }
+
+    svg path {
+      fill: $p_color;
+    }
+  }
+
+  &.btn-secondary {
+    background-color: transparent;
+    border: 1px solid $p_color;
+    color: $p_color;
+
+    &:hover {
+      background-color: $p_color;
+      color: #fff;
+
+      i {
+        color: #fff;
+      }
+
+      svg path {
+        fill: #fff;
+      }
+    }
+  }
+
+  &.btn-white {
+    color: #fff;
+    border: 1px solid #fff;
+
+    &:hover {
+      color: $p_color;
+      background-color: #fff;
+    }
+
+  }
+
+  &:disabled {
+    background-color: $accent_blush;
+    border: 1px solid $accent_blush;
+    color: rgba(152, 152, 171, 0.65);
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: $accent_blush;
+      border: 1px solid $accent_blush;
+      color: rgba(152, 152, 171, 0.65);
+    }
+  }
+
+  &.btn-260 {
+    min-width: 260px;
+  }
+
+  &.btn-200 {
+    min-width: 200px;
+  }
+
+  &.btn-150 {
+    min-width: 150px;
+    padding: 0 15px;
+  }
+  &.btn-120{
+    min-width: 120px;
+    padding: 0 15px;
+  }
+
+  &.btn-sm{
+    font-size: 12px;
+    padding: 3px 15px;
+    height: 26px;
+    line-height: 20px;
+    letter-spacing: 0.02em;
+    font-weight: 500;
+    border-radius: 4px;
+  }
+
+  @media #{$max991}{
+    line-height: 42px;
+  }
+  @media #{$max575}{
+    line-height: 38px;
+    min-width: 140px;
+  }
+}
+
+.ic-btn-group {
+  @include flexbox();
+  @include flex-wrap();
+  @media #{$max375} {
+    @include flex-direction(column);
+  }
+
+  .btn:not(:last-child) {
+    margin-right: 32px;
+    @media #{$max375} {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+  }
+
+  &.text-center {
+    @include justify-content(center);
+  }
+}
+
+select.form-select {
+  padding: 12px;
+  background-color: #FFFFFF;
+  border: 1px solid #532437;
+  border-radius: 8px;
+  height: 51px;
+  line-height: 27px;
+}
+
+.form-control {
+  background-color: #FFFFFF;
+  border: 1px solid #532437;
+  border-radius: 8px;
+  height: 51px;
+  line-height: 27px;
+
+  &:focus {
+    border: 1px solid #532437;
+  }
+}
+textarea.form-control{
+  height: 91px;
+}
+
+.input-group-text {
+  border: 1px solid #532437;
+}
+
+.helper-text-ash{
+    color: $helper_text_ash;
+}
+
+.text-sm{
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0.02em;
+}
+/*
+font size
+*/
+.fs-12{
+  font-size: 12px !important;
+}
+.fs-14{
+  font-size: 14px !important;
+}
+.fs-16{
+  font-size: 16px !important;
+}
+
+/*
+Bootstrap select
+*/
+.bootstrap-select>.dropdown-toggle {
+  background-color: #FFFFFF;
+  border: 1px solid #532437;
+  border-radius: 8px;
+  height: 51px;
+  line-height: 27px;
+  padding: 0 12px;
+
+  &:focus{
+    outline: none !important;
+  }
+
+  .filter-option-inner{
+    line-height: 50px;
+  }
+
+  &.bs-placeholder,
+  &.bs-placeholder:hover{
+    color: $text_wine;
+  }
+}
+
+.bootstrap-select.show-tick .dropdown-menu{
+  li a.dropdown-item:active {
+      color: $text_wine;
+      text-decoration: none;
+      background-color: #F8BD67;
+  }
+  li a span.check-mark{
+    display: inline-block;
+  }
+  span.check-mark {
+    position: absolute;
+    right: auto;
+    top: 5px;
+    left: 8px;
+
+    &.bs-ok-default:before {
+      content: '';
+      display: block;
+      width: 22px;
+      height: 22px;
+      border: 2px solid #9898AB;
+      border-radius: 4px;
+    }
+    &.bs-ok-default:after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 8px;
+      display: none;
+      width: 7px;
+      height: 13px;
+      border-style: solid;
+      border-width: 0 2px 2px 0;
+      border-color: #fff;
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+  }
+  .selected{
+    span.check-mark {
+      &:before{
+        border-color: #4B4DED;
+        background-color: #4B4DED;
+      }
+      &:after {
+        display: block;
+      }
+    }
+  }
+}
+
+.bootstrap-select .dropdown-menu li a{
+  padding-left: 40px;
+}

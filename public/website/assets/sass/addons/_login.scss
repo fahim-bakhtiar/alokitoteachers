@@ -1,0 +1,24 @@
+.login-section {
+  background-color: #fff;
+  padding: 40px 0;
+
+  .forgot-password{
+    color: $p_color;
+
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+
+  .btn-signup{
+    color:$p_color;
+    @include flexbox();
+    @include align-items(center);
+    @include justify-content(center);
+    font-weight: 600;
+
+    i{
+      margin-left: 8px;
+    }
+  }
+}

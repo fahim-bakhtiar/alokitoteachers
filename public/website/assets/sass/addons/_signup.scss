@@ -1,0 +1,94 @@
+/* Form fields */
+#signup-form {
+  input[name=accountType]{
+    display: none;
+  }
+  input[name=accountType] + label{
+    cursor: pointer;
+
+    .icon{
+      width: 96px;
+      height: 96px;
+      background: #FFFFFF;
+      border: 2px solid rgba(14, 14, 44, 0.5);
+      border-radius: 8px;
+      text-align: center;
+      line-height: 92px;
+      margin-bottom: 10px;
+    }
+  }
+  input[name=accountType]:checked + label{
+    .icon{
+      background-color: #F8BD67;
+    }
+  }
+}
+
+/* Progress Bar */
+.at-progress-bar {
+  display: inline-flex;
+  @include justify-content(center);
+  margin: 0 auto 40px;
+  position: relative;
+
+  .line {
+    height: 2px;
+    width: 100%;
+    background: #FAD39A;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  ul {
+    display: flex;
+    width: 250px;
+    list-style: none;
+    padding: 0px;
+    margin: initial;
+    justify-content: space-between;
+    z-index: 1;
+
+    .progressbar-dots {
+      border: 4px solid #fff;
+      background: #FAD39A;
+      height: 24px;
+      width: 24px;
+      border-radius: 50%;
+      text-align: center;
+      color: #fff;
+      font-size: 12px;
+      line-height: 18px;
+      font-weight: 600;
+
+      &.active {
+        font-size: 16px;
+        color: #F29C1F;
+        background: #fff;
+        box-shadow: 0 0 0 2px #F29C1F;
+      }
+    }
+  }
+}
+
+/*  Tab */
+#signup-form .tab-pane,
+.need-assessment-form .tab-pane {
+  display: none;
+}
+
+#signup-form .tab-pane:first-child,
+.need-assessment-form .tab-pane:first-child {
+  display: block;
+}
+
+/* Error */
+span.error {
+  font-size: 12px;
+  font-family: "helvetica neue", arial, sans-serif;
+  color: #D6041D;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 10px;
+}

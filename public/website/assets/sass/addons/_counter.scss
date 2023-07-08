@@ -1,0 +1,35 @@
+.counter-section {
+  padding-top: 32px;
+
+
+
+  .counter {
+    margin-bottom: 24px;
+    @media #{$max767} {
+      border: 1px solid #F29C1F;
+      border-radius: 16px;
+      padding: 16px 82px 16px 16px;
+    }
+
+    .counter-icon{
+      margin-right: 24px;
+
+      @media #{$max767} {
+        max-width: 56px;
+      }
+    }
+
+    .counter-number{
+      line-height: 81px;
+      letter-spacing: -0.01em;
+      color: $p_color;
+      margin-bottom: 0;
+
+      @media #{$max767} {
+        line-height: 56px;
+        font-size: 42px;
+        font-weight: 600;
+      }
+    }
+  }
+}

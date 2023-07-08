@@ -1,0 +1,31 @@
+@import 'global/variable';
+@import 'global/mixin';
+@import 'global/reset';
+@import 'global/global';
+@import 'global/header';
+@import 'global/preloader';
+@import 'global/animation';
+
+//addons
+@import "addons/banner";
+@import "addons/courses";
+@import "addons/counter";
+@import "addons/workshop";
+@import "addons/partner";
+@import "addons/worksheet";
+@import "addons/why-choose-us";
+@import "addons/leader-board";
+@import "addons/testimonial";
+@import "addons/course-intro";
+@import "addons/course-single";
+@import "addons/subscription";
+@import "addons/login";
+@import "addons/signup";
+@import "addons/resource";
+@import "addons/innovation";
+@import "addons/profile";
+@import "addons/profile-edit";
+@import "addons/need-assessment";
+@import "addons/notification";
+
+@import 'global/footer';

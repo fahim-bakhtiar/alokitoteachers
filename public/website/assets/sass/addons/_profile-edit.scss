@@ -1,0 +1,133 @@
+.profile-edit-section {
+  .profile-edit-header {
+    padding: 32px 0;
+    box-shadow: 0px 10px 4px rgba(0, 0, 0, 0.01), 0px 5px 3px rgba(0, 0, 0, 0.05), 0px 1px 1px rgba(0, 0, 0, 0.1);
+    position: relative;
+
+    .profile-edit-header-inner {
+      @include flexbox();
+      @include justify-content(space-between);
+
+      @media #{$max991} {
+        .btn-default-wrapper{
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          padding: 15px;
+          background-color: #532437;
+          z-index: 9999;
+
+          .btn-default{
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  .edit-form {
+    background-color: $accent_blush;
+    padding: 36px 0;
+
+    .edit-card {
+      padding: 16px 16px 20px;
+      background: #FFFFFF;
+      border: 1px solid rgba(14, 14, 44, 0.1);
+      border-radius: 16px;
+      margin-bottom: 36px;
+
+      .card-header {
+        margin-bottom: 40px;
+
+        img {
+          margin-right: 24px;
+        }
+      }
+
+      label{
+        letter-spacing: 0.02em;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 20px;
+      }
+      input:disabled{
+        border: 1px solid rgba(152, 152, 171, 0.65);
+        color: rgba(152, 152, 171, 0.65);
+        background-image: url('../images/icons/disabled-icon.png');
+        background-repeat: no-repeat;
+        background-position: 96% 50%;
+      }
+      .error-message{
+        display: none;
+      }
+      .form-error{
+        input{
+          border: 1px solid #BA1A1A;
+          box-shadow: 0 0 0 2px #FDC5EA;
+          background-image: url('../images/icons/error.png');
+          background-repeat: no-repeat;
+          background-position: 96% 50%;
+        }
+        .error-message{
+          display: block;
+          font-weight: 500;
+          font-size: 10px;
+          line-height: 17px;
+          letter-spacing: 0.02em;
+          color: #BA1A1A;
+        }
+      }
+      .form-valid{
+        input{
+          border: 1px solid #23D160;
+          background-image: url('../images/icons/green-circle-check.svg');
+          background-repeat: no-repeat;
+          background-position: 96% 50%;
+          background-size: 24px;
+        }
+      }
+    }
+  }
+
+  .avatar-upload {
+    position: relative;
+
+    .avatar-edit {
+      input {
+        display: none;
+
+        + label {
+          cursor: pointer;
+        }
+      }
+
+      .remove-image {
+        cursor: pointer;
+        color: $p_color;
+
+        svg{
+          margin-right: 8px;
+        }
+      }
+    }
+
+    .avatar-preview {
+      width: 114px;
+      height: 114px;
+      position: relative;
+      border-radius: 100%;
+      background-color: $helper_text_ash;
+      margin-right: 48px;
+
+      > div {
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+    }
+  }
+}

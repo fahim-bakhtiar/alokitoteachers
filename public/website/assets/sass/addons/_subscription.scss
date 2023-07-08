@@ -1,0 +1,77 @@
+.subscription-section {
+  background-color: $accent_blush;
+  padding: 40px 0;
+
+  .package-item {
+    background: #FFFFFF;
+    border: 1px solid rgba(14, 14, 44, 0.1);
+    border-radius: 16px;
+    padding: 36px 24px 24px 36px;
+
+    @media #{$max767} {
+      margin-bottom: 30px;
+    }
+
+    .title {
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 20px;
+      color: $helper_text_ash;
+      margin-bottom: 14px;
+    }
+
+    .package-price {
+      @include flexbox();
+      @include align-items(flex-end);
+      @include justify-content(space-between);
+      margin-bottom: 20px;
+      padding-bottom: 40px;
+      border-bottom: 2px solid rgba(14, 14, 44, 0.25);
+
+      @media #{$max1199} {
+        @include flex-direction(column);
+        @include align-items(center);
+
+        .btn-default{
+          margin-top: 20px;
+        }
+      }
+
+      @media #{$max991} {
+        @include justify-content(center);
+      }
+
+      h1{
+        line-height: 81px;
+        letter-spacing: -0.01em;
+        margin-bottom: 0;
+      }
+    }
+
+    .specification-header{
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    ul{
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 0;
+
+      li{
+        margin-bottom: 10px;
+        @include flexbox();
+        @include align-items(center);
+        @media #{$max991} {
+          @include justify-content(center);
+        }
+
+        i{
+          font-size: 20px;
+          color:$p_color;
+          margin-right: 8px;
+        }
+      }
+    }
+  }
+}
