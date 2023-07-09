@@ -230,38 +230,7 @@
 
                         </div>
 
-                        <div class="row mt-3">
-
-                            <div class="col mb-3">
-
-                                <label for="">Start Date*</label>
-
-                                <div class="input-group date" id="start_date" data-target-input="nearest">
-
-                                    <input type="text" class="form-control" name="start_date" value="{{old('start_date') ? date('d M, Y', strtotime(old('start_date'))): ''}}" data-provider="flatpickr" data-date-format="d M, Y" >
-
-                                    <span class="input-group-text" id="basic-addon1"> <i class="bx bx-calendar fs-20"></i> </span>
-                                    
-                                </div>
-
-                            </div>
-
-                            <div class="col mb-3">
-
-                                <label for="">End Date*</label>
-
-                                <div class="input-group date" id="end_date" data-target-input="nearest">
-
-                                    <input type="text" class="form-control" name="end_date" value="{{old('end_date') ? date('d M, Y', strtotime(old('end_date'))): ''}}" data-provider="flatpickr" data-date-format="d M, Y" >
-
-                                    <span class="input-group-text" id="basic-addon1"> <i class="bx bx-calendar fs-20"></i> </span>
-                                    
-                                </div>
-
-                            </div>
-                            
-                        </div>
-
+                        
                         <div class="row">
 
                             <div class="col">

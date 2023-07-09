@@ -1,10 +1,10 @@
 <?php
 
 use App\Models\Admin;
+use App\Models\Course;
 use GuzzleHttp\Client;
 use App\Models\Teacher;
 use App\Models\Trainer;
-use App\Models\Course;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +20,7 @@ use App\Http\Controllers\web\Teacher\TeacherInnovationController;
 use App\Http\Controllers\web\Teacher\TeacherSubscriptionController;
 use App\Http\Controllers\web\Admin\CourseManagement\CourseController;
 use App\Http\Controllers\web\Admin\UserManagement\AdminCrudController;
+use App\Http\Controllers\web\Admin\WorkshopManagement\BatchController;
 use App\Http\Controllers\web\Admin\FacultyManagement\FacultyController;
 use App\Http\Controllers\web\Admin\PackageManagement\PackageController;
 use App\Http\Controllers\web\Admin\ResourceManagement\LessonController;
@@ -277,6 +278,13 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin/dashboard'], function(
     Route::get('workshop-management/workshop/edit/{workshop_id}', [WorkshopController::class, 'edit'])->name('workshop-management.workshop.edit');
     Route::post('workshop-management/workshop/update/{workshop_id}', [WorkshopController::class, 'update'])->name('workshop-management.workshop.update');
     Route::get('workshop-management/workshop/change-status/{workshop_id}', [WorkshopController::class, 'changeStatus'])->name('workshop-management.workshop.change-status');
+
+    //Batch
+    Route::get('workshop-management/{workshop_id}/batch/create', [BatchController::class, 'create'])->name('workshop-management.batch.create');
+    Route::post('workshop-management/batch/store', [BatchController::class, 'store'])->name('workshop-management.batch.store');
+    Route::get('workshop-management/{workshop_id}/batch/index', [BatchController::class, 'index'])->name('workshop-management.batch.list');
+    Route::get('workshop-management/batch/{id}/edit', [BatchController::class, 'edit'])->name('workshop-management.batch.edit');
+    Route::post('workshop-management/batch/{id}/edit', [BatchController::class, 'update']);
 
     // WORKSHOP TESTIMONIAL
     Route::get('workshop-management/workshop-testimonial/index/{workshop_id}', [WorkshopTestimonialController::class, 'index'])->name('workshop-management.workshop-testimonial.index');

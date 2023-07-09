@@ -4,6 +4,7 @@ namespace App\Services;
 
 use Storage;
 use Carbon\Carbon;
+use App\Models\Batch;
 use App\Models\Workshop;
 use Illuminate\Support\Str;
 
@@ -19,10 +20,6 @@ class WorkshopService
     public function store($request)
     {
         $workshop = Workshop::create($request->only(['name', 'description', 'price', 'sale_price', 'preview_video_url', 'type', 'duration', 'total_credit_hours', 'learning_outcomes']));
-
-        $workshop->start_date = Carbon::parse($request->start_date);
-
-        $workshop->end_date = Carbon::parse($request->end_date);
 
 
         if($request->thumbnail){
@@ -87,6 +84,62 @@ class WorkshopService
         $workshop->status = $workshop->status == "active" ? "inactive" : "active";
 
         $workshop->save();
+    }
+
+    //BATCHES
+
+    public function store_batch($data){
+
+        $batch = new Batch();
+
+        $batch->name = $data->name; 
+
+        $batch->limit = $data->limit;
+
+        $batch->workshop_id = $data->workshop_id;
+
+        $batch->start_date = Carbon::parse($data->start_date);
+
+        $batch->end_date = Carbon::parse($data->end_date);
+
+        $batch->save();
+
+        return $batch;
+
+    }
+
+    public function get_batches($workshop_id){
+
+        $batches = Batch::with('workshop')->where('workshop_id', $workshop_id)->get();
+
+        return $batches;
+
+    }
+
+    public function find_batch($batch_id){
+
+        $batch = Batch::with('workshop')->find($batch_id);
+
+        return $batch;
+
+    }
+
+    public function update_batch($data){
+
+        $batch = Batch::with('workshop')->find($data->batch_id);
+
+        $batch->name = $data->name; 
+
+        $batch->limit = $data->limit;
+
+        $batch->start_date = Carbon::parse($data->start_date);
+
+        $batch->end_date = Carbon::parse($data->end_date);
+
+        $batch->save();
+
+        return $batch;
+
     }
 
 

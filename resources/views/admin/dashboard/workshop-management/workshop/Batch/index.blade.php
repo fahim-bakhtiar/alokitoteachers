@@ -19,7 +19,7 @@
 
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
 
-                <h4 class="mb-sm-0">Workshop List</h4>
+                <h4 class="mb-sm-0">Workshop: {{$batches[0]->workshop->name}}</h4>
 
                 <div class="page-title-right">
 
@@ -27,7 +27,9 @@
 
                         <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
 
-                        <li class="breadcrumb-item active">Workshop List</li>
+                        <li class="breadcrumb-item"><a href="{{route('workshop-management.workshop.index')}}">Workshops</a></li>
+
+                        <li class="breadcrumb-item active">Batch List</li>
 
                     </ol>
 
@@ -84,53 +86,40 @@ if (document.getElementById("table-gridjs"))
             },
            
             {
-                name: 'Workshop Name',
+                name: 'Batch Name',
                 width: '300px',
                 data: (function (row) {
 
-                    return gridjs.html(`<div class="d-flex justify-content-between"> <img class="img-fluid" style="height:80px;" src="${row.thumbnail}"> <p style="padding-left:10px">${row.name}</p></div>`);
+                    return gridjs.html(`<div class="d-flex justify-content-between"> <p style="padding-left:10px">${row.name}</p></div>`);
                 })
             },
             {
-                name: 'Price',
+                name: 'Registration Limit',
                 data: (function (row) {
 
-                    return gridjs.html(`<span">BDT ${row.price}</span>`);
-                    
-                })
-            },
-            {
-                name: 'Sale Price',
-                data: (function (row) {
-
-                    if(row.sale_price != null)
-                        return gridjs.html(`<span">BDT ${row.sale_price}</span>`);
-                    
-                })
-            },
-            {
-                name: 'Duration',
-                data: (function (row) {
-
-                    return gridjs.html(`<span">${row.duration} Days</span>`);
+                    return gridjs.html(`<span">${row.limit}</span>`);
                     
                 })
             },
             
             {
-                name: 'Activation Status',
+                name: 'Starting Date',
                 data: (function (row) {
-                    
-                    if(row.status == 'inactive')
 
-                        return gridjs.html(`<span"><i class="bx bx-block fs-20"></i></span>`);
-
-                    if(row.status == 'active')
-
-                        return gridjs.html(`<span"><i class="bx bxs-check-circle fs-20"></i></span>`);
+                    return gridjs.html(`<span">${row.start_date}</span>`);
                     
                 })
             },
+
+            {
+                name: 'Ending Date',
+                data: (function (row) {
+
+                    return gridjs.html(`<span">${row.end_date}</span>`);
+                    
+                })
+            },
+
             {
                 name: 'Actions',
                 data: (function (row) {
@@ -140,9 +129,6 @@ if (document.getElementById("table-gridjs"))
                         <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Select</button>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="${row.edit_link}">Edit</a></li>
-                            <li><a class="dropdown-item" href="${row.activation_link}">Change Status</a></li>
-                            <li><a class="dropdown-item" href="${row.batch_create_link}">Add Batch</a></li>
-                            <li><a class="dropdown-item" href="${row.batch_list_link}">All Batches</a></li>
                         </ul>
                     
                     `);
@@ -154,7 +140,7 @@ if (document.getElementById("table-gridjs"))
         },
         sort: true,
         search: true,
-        data: @json($workshops->toArray())
+        data: @json($batches->toArray())
     }).render(document.getElementById("table-gridjs"));
 
     @if(session('result'))

@@ -30,6 +30,13 @@ class WorkshopController extends Controller
 
             $workshop->edit_link = route('workshop-management.workshop.edit', $workshop->id);
 
+            $workshop->batch_create_link = route('workshop-management.batch.create', $workshop->id);
+ 
+            if(!empty($this->workshop_service->get_batches($workshop->id))){
+
+                $workshop->batch_list_link = route('workshop-management.batch.list', $workshop->id);
+            }
+            
             $workshop->thumbnail = $workshop->getAbsoluteThumbnailPath();
 
             if($workshop->status == 'inactive'){
@@ -42,7 +49,7 @@ class WorkshopController extends Controller
             
 
         }
-
+        // dd();
         return view('admin.dashboard.workshop-management.workshop.index', compact('workshops'));
     }
 
@@ -69,8 +76,6 @@ class WorkshopController extends Controller
             'trainers' => 'required | array',
             'duration' => 'required | numeric',
             'total_credit_hours' => 'required | numeric',
-            'start_date' => 'required',
-            'end_date' => 'required',
             'learning_outcomes' => 'required | string'
         ]);
 
