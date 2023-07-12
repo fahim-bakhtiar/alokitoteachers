@@ -1678,7 +1678,7 @@ header.nav-open .mobile-menu-main {
 .workshop-item {
   background: #EFF3F6;
   border: 1px solid rgba(14, 14, 44, 0.1);
-  border-radius: 250px 16px 16px 250px;
+  border-radius: 20px;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -1688,6 +1688,7 @@ header.nav-open .mobile-menu-main {
   -ms-flex-align: center;
   align-items: center;
   margin-bottom: 36px;
+  padding-left: 30px;
 }
 @media only screen and (max-width: 991.98px) {
   .workshop-item {
@@ -4714,4 +4715,15 @@ span.error {
 
 .progress {
   background-color: #dbdbdb;
+}
+
+/* CUSTOM */
+
+.batch-box{
+  border: 1px solid gray;
+  border-radius: 20px;
+  padding: 20px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: #f6f6f6;
 }

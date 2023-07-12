@@ -14,6 +14,7 @@ use App\Http\Controllers\web\Website\HomePageController;
 use App\Http\Controllers\web\Teacher\TeacherAuthController;
 use App\Http\Controllers\web\Website\CoursesPageController;
 use App\Http\Controllers\web\Website\PackagesPageController;
+use App\Http\Controllers\web\website\WorkshopPageController;
 use App\Http\Controllers\web\Teacher\TeacherAccountController;
 use App\Http\Controllers\web\Website\InnovationPageController;
 use App\Http\Controllers\web\Teacher\TeacherInnovationController;
@@ -74,6 +75,8 @@ Route::get('/hello', function(){
 Route::post('/sslcom/packagepurchase/complete', [TeacherSubscriptionController::class, 'complete'])->name('sslcom.package.purchase.complete');
 Route::post('/sslcom/coursepurchase/complete', [CoursesPageController::class, 'complete'])->name('sslcom.course.purchase.complete');
 
+Route::post('/sslcom/workshoppurchase/complete', [WorkshopPageController::class, 'complete'])->name('sslcom.workshop.purchase.complete');
+
 // **************************** webSITE *************************************
 
 Route::get('/', [HomePageController::class, 'homepage'])->name('website.homepage');
@@ -87,6 +90,10 @@ Route::get('/packages', [PackagesPageController::class, 'deliver_packages'])->na
 Route::get('/courses', [CoursesPageController::class, 'deliver_courses'])->name('website.courses.all');
 
 Route::get('/courses/course/{id}', [CoursesPageController::class, 'deliver_single'])->name('website.courses.single');
+
+Route::get('/workshops', [WorkshopPageController::class, 'deliver_workshops'])->name('website.workshops.all');
+
+Route::get('/workshops/{workshop_id}/batches', [WorkshopPageController::class, 'deliver_batches'])->name('website.workshops.batches');
 
 
 
@@ -145,6 +152,10 @@ Route::group(['middleware' => 'teacher', 'prefix' => 'account/teacher'], functio
     Route::post('course/video/course_video_watched', [CoursesPageController::class, 'course_video_just_been_watched'])->name('course.teacher.course_video_watched');
 
     Route::post('course/quiz/quiz_submited', [CoursesPageController::class, 'course_quiz_just_been_submited'])->name('course.teacher.course_quiz_submited');
+
+    //WORKSHOP
+
+    Route::post('/workshops/{workshopID}/teacher/{teacherID}/purchase', [WorkshopPageController::class, 'purchase_workshop'])->name('workshop.teacher.purchase');
     
 
 

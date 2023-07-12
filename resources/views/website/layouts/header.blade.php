@@ -44,7 +44,7 @@
                     <li class="menu-item"><a href="{{route('website.courses.all')}}">Courses</a></li>
                     <!-- <li class="menu-item"><a href="resources.html">Resources</a></li> -->
                     <!-- <li class="menu-item"><a href="{{route('website.innovation.all')}}">Innovations</a></li> -->
-                    <!-- <li class="menu-item"><a href="workshop-registration.html">Workshops</a></li> -->
+                    <li class="menu-item"><a href="{{route('website.workshops.all')}}">Workshops</a></li>
                     <!-- <li class="menu-item"><a href="{{route('website.packages.all')}}">Packages</a></li> -->
                     @if(auth()->guard('web-teacher')->check())
                     <li class="menu-item" style="background-color: #004259;border-radius: 10px;"><a href="{{route('teacher.profile')}}" style="color:#fff">My Profile</a></li>

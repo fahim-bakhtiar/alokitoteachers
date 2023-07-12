@@ -7,6 +7,7 @@ use App\Models\Course;
 use App\Models\Payment;
 use App\Models\District;
 use App\Models\Progress;
+use App\Models\Workshop;
 use App\Models\Subscription;
 use App\Models\Catagorizable;
 use Laravel\Sanctum\HasApiTokens;
@@ -44,6 +45,11 @@ class Teacher extends Authenticatable
 
         return $this->hasMany(Progress::class);
 
+    }
+
+    public function workshops()
+    {
+        return $this->belongsToMany(Workshop::class, 'workshop_teachers', 'workshop_id', 'teacher_id');
     }
 
     //Internal Useful Methods

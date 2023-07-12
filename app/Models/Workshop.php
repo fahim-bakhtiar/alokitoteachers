@@ -5,6 +5,7 @@ namespace App\Models;
 use Storage;
 use App\Models\Batch;
 use App\Models\Payment;
+use App\Models\Teacher;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -39,5 +40,10 @@ class Workshop extends Model
     public function batch()
     {
         return $this->hasMany(Batch::class);
+    }
+
+    public function teachers()
+    {
+        return $this->belongsToMany(Teacher::class, 'workshop_teachers', 'workshop_id', 'teacher_id');
     }
 }
