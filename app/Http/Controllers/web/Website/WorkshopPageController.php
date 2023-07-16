@@ -258,4 +258,16 @@ class WorkshopPageController extends Controller
 
         }
     }
+
+    public function privacy(){
+
+        return view('website.policies.privacy');
+
+    }
+
+    public function terms(){
+
+        return view('website.policies.terms');
+
+    }
 }

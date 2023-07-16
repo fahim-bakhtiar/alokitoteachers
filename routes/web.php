@@ -95,6 +95,10 @@ Route::get('/workshops', [WorkshopPageController::class, 'deliver_workshops'])->
 
 Route::get('/workshops/{workshop_id}/batches', [WorkshopPageController::class, 'deliver_batches'])->name('website.workshops.batches');
 
+Route::get('/privacy', [WorkshopPageController::class, 'privacy'])->name('website.privacy');
+
+Route::get('/terms', [WorkshopPageController::class, 'terms'])->name('website.terms');
+
 
 
 

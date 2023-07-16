@@ -32,9 +32,8 @@
     <div class="footer-bottom">
         <div class="container">
             <ul class="footer-bottom-menu">
-                <li><a href="">Terms</a></li>
-                <li><a href="">Privacy</a></li>
-                <li><a href="">Policy</a></li>
+                <li><a href="{{route('website.terms')}}">Terms</a></li>
+                <li><a href="{{route('website.privacy')}}">Privacy</a></li>
             </ul>
         </div>
     </div>
