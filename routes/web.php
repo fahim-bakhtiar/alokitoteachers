@@ -14,7 +14,7 @@ use App\Http\Controllers\web\Website\HomePageController;
 use App\Http\Controllers\web\Teacher\TeacherAuthController;
 use App\Http\Controllers\web\Website\CoursesPageController;
 use App\Http\Controllers\web\Website\PackagesPageController;
-use App\Http\Controllers\web\website\WorkshopPageController;
+use App\Http\Controllers\web\Website\WorkshopPageController;
 use App\Http\Controllers\web\Teacher\TeacherAccountController;
 use App\Http\Controllers\web\Website\InnovationPageController;
 use App\Http\Controllers\web\Teacher\TeacherInnovationController;
