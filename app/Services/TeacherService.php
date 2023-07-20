@@ -4,6 +4,7 @@ namespace App\Services;
 
 use Exception;
 use Carbon\Carbon;
+use App\Models\Course;
 use App\Models\Teacher;
 use Illuminate\Support\Str;
 use App\Models\Catagorizable;
@@ -267,6 +268,15 @@ class TeacherService{
     public function dropdown()
     {
         return Teacher::select('id', 'first_name', 'last_name')->get();
+    }
+
+    public function dropdownForEnrollment($course_id)
+    {
+        $course = Course::find($course_id);
+
+        $course_teacher_ids = $course->teachers->pluck('id')->toArray();
+
+        return Teacher::select('id', 'email')->whereNotIn('id', $course_teacher_ids)->get();
     }
 
     

@@ -221,6 +221,8 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin/dashboard'], function(
     Route::post('/course-management/courses/edit/{id}', [CourseController::class, 'update']);
     Route::get('/course-management/courses/activate/{id}', [CourseController::class, 'activate'])->name('course-management.course.avtivate');
     Route::get('/course-management/courses/deactivate/{id}', [CourseController::class, 'deactivate'])->name('course-management.course.deavtivate');
+    Route::get('/course-management/courses/enroll-teacher-view/{course_id}', [CourseController::class, 'enrollTeacherView'])->name('course-management.course.enroll-teacher-view');
+    Route::post('/course-management/courses/enroll-teacher/{course_id}', [CourseController::class, 'enrollTeacher'])->name('course-management.course.enroll-teacher');
 
     //sequence
     Route::get('/course-management/courses/{id}/sequence', [CourseController::class, 'sequence'])->name('course-management.course.sequence');

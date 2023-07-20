@@ -6,15 +6,20 @@ use App\Models\Faculty;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Services\CourseService;
+use App\Services\TeacherService;
 use App\Http\Controllers\Controller;
 
 class CourseController extends Controller
 {
     protected $course_service;
 
-    public function __construct(CourseService $course_service){
+    protected $teacher_service;
+
+    public function __construct(CourseService $course_service, TeacherService $teacher_service){
 
         $this->course_service = $course_service;
+
+        $this->teacher_service = $teacher_service;
 
     }
 
@@ -71,6 +76,8 @@ class CourseController extends Controller
             }
 
             $course->sequence_link = route('course-management.course.sequence', $course->id);
+
+            $course->enroll_teacher_link = route('course-management.course.enroll-teacher-view', $course->id);
             
 
         }
@@ -378,6 +385,26 @@ class CourseController extends Controller
 
         return redirect()->back()->with('success', 'Question is updated successfully!');
 
+    }
+
+    public function enrollTeacherView($course_id)
+    {
+        $teachers = $this->teacher_service->dropdownForEnrollment($course_id);
+
+        return view('admin.dashboard.course-management.enroll_teacher', compact('course_id', 'teachers'));
+    }
+
+    public function enrollTeacher(Request $request, $course_id)
+    {
+        $request->validate([
+            'teacher_ids' => 'required | array'
+        ], [
+            'teacher_ids.required' => 'The field cannot be empty !'
+        ]);
+
+        $teachers = $this->course_service->enrollTeacher($request, $course_id);
+
+        return redirect()->route('course-management.course.list')->with(['success' => 'Teachers Enrolled Successfully !']);
     }
 
 

@@ -139,6 +139,7 @@ if (document.getElementById("table-gridjs"))
                             <li><a class="dropdown-item" href="${row.edit_link}">Edit</a></li>
                             <li><a class="dropdown-item" href="${row.activation_link}">Change Status</a></li>
                             <li><a class="dropdown-item" href="${row.sequence_link}">Sequence</a></li>
+                            <li><a class="dropdown-item" href="${row.enroll_teacher_link}">Enroll Teacher</a></li>
                         </ul>
                     
                     `);
