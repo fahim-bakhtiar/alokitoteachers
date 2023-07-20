@@ -34,6 +34,7 @@ use App\Http\Controllers\web\Admin\ResourceManagement\WorksheetController;
 use App\Http\Controllers\web\Admin\ResourceManagement\LessonPlanController;
 use App\Http\Controllers\web\Admin\InnovationManagement\InnovationController;
 use App\Http\Controllers\web\Admin\WorkshopManagement\WorkshopTestimonialController;
+use App\Http\Controllers\web\Admin\WorkshopManagement\WorkshopRequestController;
 
 
 
@@ -295,6 +296,9 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin/dashboard'], function(
     Route::get('workshop-management/workshop/edit/{workshop_id}', [WorkshopController::class, 'edit'])->name('workshop-management.workshop.edit');
     Route::post('workshop-management/workshop/update/{workshop_id}', [WorkshopController::class, 'update'])->name('workshop-management.workshop.update');
     Route::get('workshop-management/workshop/change-status/{workshop_id}', [WorkshopController::class, 'changeStatus'])->name('workshop-management.workshop.change-status');
+
+    // WORKSHOP REQUEST
+    Route::get('workshop-management/workshop-request/index', [WorkshopRequestController::class, 'index'])->name('workshop-management.workshop-request.index');
 
     //Batch
     Route::get('workshop-management/{workshop_id}/batch/create', [BatchController::class, 'create'])->name('workshop-management.batch.create');
