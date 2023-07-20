@@ -49,7 +49,7 @@ class Teacher extends Authenticatable
 
     public function workshops()
     {
-        return $this->belongsToMany(Workshop::class, 'workshop_teachers', 'workshop_id', 'teacher_id');
+        return $this->belongsToMany(Workshop::class, 'workshop_teachers', 'teacher_id', 'workshop_id');
     }
 
     //Internal Useful Methods

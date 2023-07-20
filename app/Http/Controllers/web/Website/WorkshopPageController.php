@@ -218,7 +218,7 @@ class WorkshopPageController extends Controller
                 $data_details = json_decode($json_data->details);
 
                 $teacher = $this->teacher_service->find($data_details->teacher->id);
-
+                dd($teacher);
                 $workshop = Workshop::find($data_details->workshop->id);
                 //-------------
                 $teacher->workshops()->attach($data_details->workshop->id, ['created_at' => Carbon::now()]);
