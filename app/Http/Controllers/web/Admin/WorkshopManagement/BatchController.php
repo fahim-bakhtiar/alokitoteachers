@@ -22,9 +22,14 @@ class BatchController extends Controller
 
     public function index(Request $request)
     {
-
+        
         $batches = $this->workshop_service->get_batches($request->workshop_id);
+        
+        if($batches->count() == 0){
 
+            return redirect()->back();
+
+        }
         foreach($batches as $batch){
 
             $batch->edit_link = route('workshop-management.batch.edit', $batch->id);            

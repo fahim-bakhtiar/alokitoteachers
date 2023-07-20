@@ -111,7 +111,7 @@ class WorkshopService
     public function get_batches($workshop_id){
 
         $batches = Batch::with('workshop')->where('workshop_id', $workshop_id)->get();
-
+        
         return $batches;
 
     }
