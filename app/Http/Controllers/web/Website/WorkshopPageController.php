@@ -162,7 +162,6 @@ class WorkshopPageController extends Controller
         # PARSE THE JSON RESPONSE
         $sslcz = json_decode($sslcommerzResponse, true );
 
-
         if(isset($sslcz['GatewayPageURL']) && $sslcz['GatewayPageURL']!="" ) {
             
             header('Access-Control-Allow-Origin: *');
