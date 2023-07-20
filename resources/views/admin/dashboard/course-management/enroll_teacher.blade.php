@@ -55,7 +55,7 @@
 
                         <div class="row">
 
-                            <div class="col-4">
+                            <div class="col">
 
                                 <div class="form-group mb-3">
 

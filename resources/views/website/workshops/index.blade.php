@@ -10,7 +10,7 @@
                 <p>Alokito Teachers has been holding workshops since the very beginning. We have performed numerous workshops so far and have had many success stories to tell. We focus on a teacher's ability to empower students to become a better person and acheive success in their lives.</p>
             </div>
             <div class="col-lg-4">
-                <a href="" class="btn btn-default btn-secondary px-3">
+                <a href="{{ route('website.workshops.workshop-request-view') }}" class="btn btn-default btn-secondary px-3">
                     Request for a Workshop
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <mask id="mask0_1061_28121" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="16" height="16">
