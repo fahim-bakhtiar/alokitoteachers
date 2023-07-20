@@ -10,23 +10,26 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Services\TeacherService;
 use App\Services\WorkshopService;
+use App\Services\WorkshopRequestService;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class WorkshopPageController extends Controller
 {
-
     protected $workshop_service;
     
     protected $teacher_service;
 
-    public function __construct(WorkshopService $workshop_service, TeacherService $teacher_service){
+    protected $workshop_request_service;
 
+    public function __construct(WorkshopService $workshop_service, TeacherService $teacher_service, WorkshopRequestService $workshop_request_service)
+    {
         $this->workshop_service = $workshop_service;
 
         $this->teacher_service = $teacher_service;
 
+        $this->workshop_request_service = $workshop_request_service;
     }
     
     public function deliver_workshops(){
@@ -270,4 +273,26 @@ class WorkshopPageController extends Controller
         return view('website.policies.terms');
 
     }
+
+    public function workshopRequestView()
+    {
+        return view('website.workshops.request-workshop');
+    }
+
+    public function workshopRequestStore(Request $request)
+    {
+        $request->validate([
+            'name' => 'required | string',
+            'email' => 'required | email | string',
+            'phone' => 'required | numeric',
+            'organization' => 'required | string',
+            'request_details' => 'required | string'
+        ]);
+
+        $this->workshop_request_service->store($request);
+
+        return redirect()->route('website.workshops.workshop-request-view')->with(['success' => 'Request Submitted Successfully !']);
+    }
+
+
 }

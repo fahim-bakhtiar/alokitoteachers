@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Quiz;
 use App\Models\Course;
 use App\Models\Teacher;
+use App\Models\Progress;
 use App\Models\Category;
 use App\Models\Question;
 use App\Models\CourseVideo;
@@ -542,6 +543,37 @@ class CourseService{
 
         return $result;
 
+    }
+
+    public function enrollTeacher($request, $course_id)
+    {
+        $course = Course::find($course_id);
+
+        $course->teachers()->attach($request->teacher_ids, ['created_at' => Carbon::now()]);
+
+        foreach($request->teacher_ids as $teacher_id)
+        {
+            $this->createProgress($course_id, $teacher_id);
+        }
+    }
+
+    public function createProgress($course_id, $teacher_id)
+    {
+        $progress = new Progress();
+
+        $progress->teacher_id = $teacher_id;
+
+        $progress->course_id = $course_id;
+
+        $progress->current_status = json_encode([
+            'enrolled' => true,
+            'progress' => 0,
+            'current_sequence' => 0,
+            'next_sequence' => 1,
+            'total_mark' => 0
+        ]);
+
+        $progress->save();
     }
 
 

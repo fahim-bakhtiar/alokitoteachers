@@ -34,6 +34,7 @@ use App\Http\Controllers\web\Admin\ResourceManagement\WorksheetController;
 use App\Http\Controllers\web\Admin\ResourceManagement\LessonPlanController;
 use App\Http\Controllers\web\Admin\InnovationManagement\InnovationController;
 use App\Http\Controllers\web\Admin\WorkshopManagement\WorkshopTestimonialController;
+use App\Http\Controllers\web\Admin\WorkshopManagement\WorkshopRequestController;
 
 
 
@@ -94,6 +95,10 @@ Route::get('/courses/course/{id}', [CoursesPageController::class, 'deliver_singl
 Route::get('/workshops', [WorkshopPageController::class, 'deliver_workshops'])->name('website.workshops.all');
 
 Route::get('/workshops/{workshop_id}/batches', [WorkshopPageController::class, 'deliver_batches'])->name('website.workshops.batches');
+
+Route::get('/workshops/request', [WorkshopPageController::class, 'workshopRequestView'])->name('website.workshops.workshop-request-view');
+
+Route::post('/workshops/request-store', [WorkshopPageController::class, 'workshopRequestStore'])->name('website.workshops.workshop-request-store');
 
 Route::get('/privacy', [WorkshopPageController::class, 'privacy'])->name('website.privacy');
 
@@ -221,6 +226,8 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin/dashboard'], function(
     Route::post('/course-management/courses/edit/{id}', [CourseController::class, 'update']);
     Route::get('/course-management/courses/activate/{id}', [CourseController::class, 'activate'])->name('course-management.course.avtivate');
     Route::get('/course-management/courses/deactivate/{id}', [CourseController::class, 'deactivate'])->name('course-management.course.deavtivate');
+    Route::get('/course-management/courses/enroll-teacher-view/{course_id}', [CourseController::class, 'enrollTeacherView'])->name('course-management.course.enroll-teacher-view');
+    Route::post('/course-management/courses/enroll-teacher/{course_id}', [CourseController::class, 'enrollTeacher'])->name('course-management.course.enroll-teacher');
 
     //sequence
     Route::get('/course-management/courses/{id}/sequence', [CourseController::class, 'sequence'])->name('course-management.course.sequence');
@@ -293,6 +300,9 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin/dashboard'], function(
     Route::get('workshop-management/workshop/edit/{workshop_id}', [WorkshopController::class, 'edit'])->name('workshop-management.workshop.edit');
     Route::post('workshop-management/workshop/update/{workshop_id}', [WorkshopController::class, 'update'])->name('workshop-management.workshop.update');
     Route::get('workshop-management/workshop/change-status/{workshop_id}', [WorkshopController::class, 'changeStatus'])->name('workshop-management.workshop.change-status');
+
+    // WORKSHOP REQUEST
+    Route::get('workshop-management/workshop-request/index', [WorkshopRequestController::class, 'index'])->name('workshop-management.workshop-request.index');
 
     //Batch
     Route::get('workshop-management/{workshop_id}/batch/create', [BatchController::class, 'create'])->name('workshop-management.batch.create');
