@@ -64,10 +64,10 @@ class CourseController extends Controller
 
             if($course->status == 'inactive'){
 
-                $course->activation_link = route('course-management.course.avtivate', $course->id);
+                $course->activation_link = route('course-management.course.activate', $course->id);
             }
             else{
-                $course->activation_link = route('course-management.course.deavtivate', $course->id);
+                $course->activation_link = route('course-management.course.deactivate', $course->id);
             }
 
             $course->sequence_link = route('course-management.course.sequence', $course->id);

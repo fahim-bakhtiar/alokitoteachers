@@ -69,15 +69,15 @@ class CourseController extends Controller
 
             if($course->status == 'inactive'){
 
-                $course->activation_link = route('course-management.course.avtivate', $course->id);
+                $course->activation_link = route('course-management.course.activate', $course->id);
             }
             else{
-                $course->activation_link = route('course-management.course.deavtivate', $course->id);
+                $course->activation_link = route('course-management.course.deactivate', $course->id);
+
+                $course->enroll_teacher_link = route('course-management.course.enroll-teacher-view', $course->id);
             }
 
             $course->sequence_link = route('course-management.course.sequence', $course->id);
-
-            $course->enroll_teacher_link = route('course-management.course.enroll-teacher-view', $course->id);
             
 
         }
@@ -391,7 +391,9 @@ class CourseController extends Controller
     {
         $teachers = $this->teacher_service->dropdownForEnrollment($course_id);
 
-        return view('admin.dashboard.course-management.enroll_teacher', compact('course_id', 'teachers'));
+        $course = $this->course_service->getCourse($course_id);
+
+        return view('admin.dashboard.course-management.enroll_teacher', compact('course_id', 'teachers', 'course'));
     }
 
     public function enrollTeacher(Request $request, $course_id)

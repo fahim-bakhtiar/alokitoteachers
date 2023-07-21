@@ -224,8 +224,8 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin/dashboard'], function(
     Route::get('/course-management/courses/list', [CourseController::class, 'list'])->name('course-management.course.list');
     Route::get('/course-management/courses/edit/{id}', [CourseController::class, 'show_edit_form'])->name('course-management.course.edit');
     Route::post('/course-management/courses/edit/{id}', [CourseController::class, 'update']);
-    Route::get('/course-management/courses/activate/{id}', [CourseController::class, 'activate'])->name('course-management.course.avtivate');
-    Route::get('/course-management/courses/deactivate/{id}', [CourseController::class, 'deactivate'])->name('course-management.course.deavtivate');
+    Route::get('/course-management/courses/activate/{id}', [CourseController::class, 'activate'])->name('course-management.course.activate');
+    Route::get('/course-management/courses/deactivate/{id}', [CourseController::class, 'deactivate'])->name('course-management.course.deactivate');
     Route::get('/course-management/courses/enroll-teacher-view/{course_id}', [CourseController::class, 'enrollTeacherView'])->name('course-management.course.enroll-teacher-view');
     Route::post('/course-management/courses/enroll-teacher/{course_id}', [CourseController::class, 'enrollTeacher'])->name('course-management.course.enroll-teacher');
 

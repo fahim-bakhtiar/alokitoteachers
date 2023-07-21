@@ -576,6 +576,11 @@ class CourseService{
         $progress->save();
     }
 
+    public function getCourse($course_id)
+    {
+        return Course::find($course_id);
+    }
+
 
 
     
