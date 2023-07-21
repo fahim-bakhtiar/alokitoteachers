@@ -142,7 +142,7 @@ if (document.getElementById("table-gridjs"))
                             <li><a class="dropdown-item" href="${row.edit_link}">Edit</a></li>
                             <li><a class="dropdown-item" href="${row.activation_link}">Change Status</a></li>
                             <li><a class="dropdown-item" href="${row.batch_create_link}">Add Batch</a></li>
-                            <li><a class="dropdown-item" href="${row.batch_list_link}">All Batches</a></li>
+                            ${row.batch_list_link ? '<li><a class="dropdown-item" href="' + row.batch_list_link + '">All Batches</a></li>' : ''}
                         </ul>
                     
                     `);

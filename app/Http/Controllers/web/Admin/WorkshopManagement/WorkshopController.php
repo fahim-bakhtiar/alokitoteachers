@@ -32,7 +32,7 @@ class WorkshopController extends Controller
 
             $workshop->batch_create_link = route('workshop-management.batch.create', $workshop->id);
  
-            if(!empty($this->workshop_service->get_batches($workshop->id))){
+            if(count($this->workshop_service->get_batches($workshop->id)) > 0){
 
                 $workshop->batch_list_link = route('workshop-management.batch.list', $workshop->id);
             }
