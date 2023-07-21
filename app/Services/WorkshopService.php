@@ -5,6 +5,7 @@ namespace App\Services;
 use Storage;
 use Carbon\Carbon;
 use App\Models\Batch;
+use App\Models\Teacher;
 use App\Models\Workshop;
 use App\Models\WorkshopTeacher;
 use Illuminate\Support\Str;
@@ -151,7 +152,11 @@ class WorkshopService
             't.id',
             't.first_name as name',
             't.email',
-            't.phone'
+            't.phone',
+            'workshop_teachers.assignment',
+            'workshop_teachers.participation',
+            'workshop_teachers.attendence',
+            'workshop_teachers.id as workshop_teacher_id'
 
         )
         ->where('workshop_teachers.batch_id', '=', $batch_id)
@@ -159,6 +164,33 @@ class WorkshopService
         ->get();
 
         return $teachers;
+    }
+
+    public function getTeacherByWorkshopTeacherID($workshop_teacher_id)
+    {
+        $workshop_teacher = WorkshopTeacher::find($workshop_teacher_id);
+
+        $teacher = Teacher::find($workshop_teacher->teacher_id);
+
+        return $teacher;
+    }
+
+    public function getWorkshopTeacher($workshop_teacher_id)
+    {
+        $workshop_teacher = WorkshopTeacher::find($workshop_teacher_id);
+
+        return $workshop_teacher;
+    }
+
+    public function givePointsStore($request, $workshop_teacher_id)
+    {
+        $workshop_teacher = WorkshopTeacher::find($workshop_teacher_id);
+
+        $workshop_teacher->assignment = $request->assignment;
+        $workshop_teacher->participation = $request->participation;
+        $workshop_teacher->attendence = $request->attendance;
+
+        $workshop_teacher->save();
     }
 
 

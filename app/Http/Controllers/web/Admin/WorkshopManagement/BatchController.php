@@ -92,9 +92,36 @@ class BatchController extends Controller
     {
         $teachers = $this->workshop_service->teachersUnderABatch($batch_id);
 
+        foreach($teachers as $teacher)
+        {
+            $teacher->give_points_link = route('workshop-management.batch.give-points-view', $teacher->workshop_teacher_id);
+        }
+
         $batch = $this->workshop_service->find_batch($batch_id);
 
         return view('admin.dashboard.workshop-management.workshop.batch.show-teachers', compact('teachers', 'batch'));
+    }
+
+    public function givePointsView($workshop_teacher_id)
+    {
+        $teacher = $this->workshop_service->getTeacherByWorkshopTeacherID($workshop_teacher_id);
+
+        $workshop_teacher = $this->workshop_service->getWorkshopTeacher($workshop_teacher_id);
+        
+        return view('admin.dashboard.workshop-management.workshop.batch.give-points', compact('workshop_teacher', 'teacher'));
+    }
+
+    public function givePointsStore(Request $request, $workshop_teacher_id)
+    {
+        $request->validate([
+            'assignment' => 'required | numeric',
+            'participation' => 'required | numeric',
+            'attendance' => 'required | numeric'
+        ]);
+
+        $this->workshop_service->givePointsStore($request, $workshop_teacher_id);
+
+        return redirect()->route('workshop-management.batch.give-points-view', $workshop_teacher_id)->with(['success' => 'Points Given Successfully !']);
     }
 
 

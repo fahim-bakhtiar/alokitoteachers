@@ -69,7 +69,8 @@
 <!-- gridjs js -->
 <script src="{{asset_url('dashboard/assets/libs/gridjs/gridjs.umd.js')}}"></script>
 
-
+<!-- Sweet Alerts js -->
+<script src="{{asset_url('dashboard/assets/libs/sweetalert2/sweetalert2.min.js')}}"></script>
 
 <script>
 
@@ -106,35 +107,35 @@ if (document.getElementById("table-gridjs"))
                     
                 })
             },
-            // {
-            //     name: 'Activation Status',
-            //     data: (function (row) {
+            {
+                name: 'Points',
+                data: (function (row) {
+
+                    return gridjs.html(`
+
+                        <ul>
+                            <li>Assignment: ${row.assignment}</li>
+                            <li>Participation: ${row.participation}</li>
+                            <li>Attendance: ${row.attendence}</li>
+                        </ul>
                     
-            //         if(row.status == 'inactive')
+                    `);
+                })
+            },
+            {
+                name: 'Actions',
+                data: (function (row) {
 
-            //             return gridjs.html(`<span"><i class="bx bx-block fs-20"></i></span>`);
+                    return gridjs.html(`
 
-            //         if(row.status == 'active')
-
-            //             return gridjs.html(`<span"><i class="bx bxs-check-circle fs-20"></i></span>`);
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Select</button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="${row.give_points_link}">Give Points</a></li>
+                        </ul>
                     
-            //     })
-            // },
-            // {
-            //     name: 'Actions',
-            //     data: (function (row) {
-
-            //         return gridjs.html(`
-
-            //             <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Select</button>
-            //             <ul class="dropdown-menu">
-            //                 <li><a class="dropdown-item" href="${row.edit_link}">Edit</a></li>
-            //                 <li><a class="dropdown-item" href="${row.status_change_link}">Change Status</a></li>
-            //             </ul>
-                    
-            //         `);
-            //     })
-            // },
+                    `);
+                })
+            }
         ],
         pagination: {
             limit: 10
@@ -143,6 +144,27 @@ if (document.getElementById("table-gridjs"))
         search: true,
         data: @json($teachers->toArray())
     }).render(document.getElementById("table-gridjs"));
+
+
+    @if(session('success'))
+
+        var message = '{{session("success")}}';
+
+        Swal.fire({
+            html: '<div class="mt-3">' +
+                '<lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" colors="primary:#0ab39c,secondary:#405189" style="width:120px;height:120px"></lord-icon>' +
+                '<div class="mt-4 pt-2 fs-15">' +
+                '<h4>Success!</h4>' +
+                '<p class="text-muted mx-4 mb-0">' + message + '</p>' +
+                '</div>' +
+                '</div>',
+            showConfirmButton: false,
+            buttonsStyling: false,
+            showCloseButton: true,
+            timer: 5000,
+        })
+
+    @endif
 
 
 </script>
