@@ -19,7 +19,7 @@
 
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
 
-                <h4 class="mb-sm-0">Workshop: {{$batches[0]->workshop->name}}</h4>
+                <h4 class="mb-sm-0">Batch List <span class="text-muted">(Workshop: {{$batches[0]->workshop->name}})</span></h4>
 
                 <div class="page-title-right">
 
@@ -27,7 +27,7 @@
 
                         <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
 
-                        <li class="breadcrumb-item"><a href="{{route('workshop-management.workshop.index')}}">Workshops</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('workshop-management.workshop.index')}}">Workshop List</a></li>
 
                         <li class="breadcrumb-item active">Batch List</li>
 
@@ -129,6 +129,7 @@ if (document.getElementById("table-gridjs"))
                         <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Select</button>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="${row.edit_link}">Edit</a></li>
+                            <li><a class="dropdown-item" href="${row.show_teachers_link}">Show Teachers</a></li>
                         </ul>
                     
                     `);

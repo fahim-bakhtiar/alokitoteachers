@@ -24,12 +24,12 @@ class BatchController extends Controller
     {
         $batches = $this->workshop_service->get_batches($request->workshop_id);
         
-        foreach($batches as $batch){
-
-            $batch->edit_link = route('workshop-management.batch.edit', $batch->id);            
-            $batch->start_date = date('d M, Y', strtotime($batch->start_date));            
-            $batch->end_date = date('d M, Y', strtotime($batch->end_date));            
-
+        foreach($batches as $batch)
+        {
+            $batch->edit_link = route('workshop-management.batch.edit', $batch->id);
+            $batch->start_date = date('d M, Y', strtotime($batch->start_date));
+            $batch->end_date = date('d M, Y', strtotime($batch->end_date));
+            $batch->show_teachers_link = route('workshop-management.batch.show-teachers', $batch->id);
         }
 
         return view('admin.dashboard.workshop-management.workshop.batch.index', compact('batches'));
@@ -86,6 +86,15 @@ class BatchController extends Controller
         $this->workshop_service->changeStatus($workshop_id);
 
         return redirect()->back()->with(['success' => 'Status Updated Successfully !']);
+    }
+
+    public function showTeachers($batch_id)
+    {
+        $teachers = $this->workshop_service->teachersUnderABatch($batch_id);
+
+        $batch = $this->workshop_service->find_batch($batch_id);
+
+        return view('admin.dashboard.workshop-management.workshop.batch.show-teachers', compact('teachers', 'batch'));
     }
 
 

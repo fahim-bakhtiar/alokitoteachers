@@ -310,6 +310,7 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin/dashboard'], function(
     Route::get('workshop-management/{workshop_id}/batch/index', [BatchController::class, 'index'])->name('workshop-management.batch.list');
     Route::get('workshop-management/batch/{id}/edit', [BatchController::class, 'edit'])->name('workshop-management.batch.edit');
     Route::post('workshop-management/batch/{id}/edit', [BatchController::class, 'update']);
+    Route::get('workshop-management/batch/show-teachers/{batch_id}', [BatchController::class, 'showTeachers'])->name('workshop-management.batch.show-teachers');
 
     // WORKSHOP TESTIMONIAL
     Route::get('workshop-management/workshop-testimonial/index/{workshop_id}', [WorkshopTestimonialController::class, 'index'])->name('workshop-management.workshop-testimonial.index');

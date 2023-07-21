@@ -6,6 +6,7 @@ use Storage;
 use Carbon\Carbon;
 use App\Models\Batch;
 use App\Models\Workshop;
+use App\Models\WorkshopTeacher;
 use Illuminate\Support\Str;
 
 class WorkshopService
@@ -140,6 +141,24 @@ class WorkshopService
 
         return $batch;
 
+    }
+
+    public function teachersUnderABatch($batch_id)
+    {
+        $teachers = WorkshopTeacher::join('teachers as t', 't.id', '=', 'workshop_teachers.teacher_id')
+        ->select(
+
+            't.id',
+            't.first_name as name',
+            't.email',
+            't.phone'
+
+        )
+        ->where('workshop_teachers.batch_id', '=', $batch_id)
+        ->orderBy('t.id')
+        ->get();
+
+        return $teachers;
     }
 
 
