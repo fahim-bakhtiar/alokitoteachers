@@ -124,8 +124,6 @@
 
     </div>
 
-
-
 @endsection
 
 
@@ -142,6 +140,7 @@
 <script src="{{asset_url('dashboard/assets/libs/sweetalert2/sweetalert2.min.js')}}"></script>
 
 <script>
+    
     // FilePond
     FilePond.registerPlugin(
         // encodes the file as base64 data

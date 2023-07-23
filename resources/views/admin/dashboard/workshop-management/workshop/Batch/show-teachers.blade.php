@@ -8,8 +8,6 @@
 
 @section('content')
 
-
-
     <div class="row">
 
         <div class="col-12">
@@ -39,7 +37,6 @@
 
     </div>
 
-
     <div class="row">
         
         <div class="col-lg-12">
@@ -60,8 +57,6 @@
     <!-- end row -->
 
 @endsection
-
-
 
 
 @section('js02')
@@ -165,7 +160,6 @@ if (document.getElementById("table-gridjs"))
         })
 
     @endif
-
 
 </script>
 
