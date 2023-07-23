@@ -35,6 +35,7 @@ use App\Http\Controllers\web\Admin\ResourceManagement\LessonPlanController;
 use App\Http\Controllers\web\Admin\InnovationManagement\InnovationController;
 use App\Http\Controllers\web\Admin\WorkshopManagement\WorkshopTestimonialController;
 use App\Http\Controllers\web\Admin\WorkshopManagement\WorkshopRequestController;
+use App\Http\Controllers\web\Admin\NeedAssessment\NeedAssessmentController;
 
 
 
@@ -320,6 +321,11 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin/dashboard'], function(
     Route::post('workshop-management/workshop-testimonial/store', [WorkshopTestimonialController::class, 'store'])->name('workshop-management.workshop-testimonial.store');
     Route::get('workshop-management/workshop-testimonial/edit/{workshop_testimonial_id}', [WorkshopTestimonialController::class, 'edit'])->name('workshop-management.workshop-testimonial.edit');
     Route::post('workshop-management/workshop-testimonial/update/{workshop_testimonial_id}', [WorkshopTestimonialController::class, 'update'])->name('workshop-management.workshop-testimonial.update');
+
+    // NEED ASSESSMENT
+    Route::get('need-assessment/question/index', [NeedAssessmentController::class, 'questionList'])->name('need-assessment.question.index');
+    Route::get('need-assessment/question/create', [NeedAssessmentController::class, 'createQuestion'])->name('need-assessment.question.create');
+    Route::post('need-assessment/question/store', [NeedAssessmentController::class, 'storeQuestion'])->name('need-assessment.question.store');
 
     // Lesson
     Route::get('/resource-management/lesson/create/{id}', [LessonController::class, 'lesson_create_form'])->name('resource-management.lesson.create');
