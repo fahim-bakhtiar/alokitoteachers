@@ -240,6 +240,59 @@
                     </li>
 
                     <li class="nav-item">
+                        <a class="nav-link menu-link" href="#sidebarMultilevel" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarMultilevel">
+                            <i class="bx bx-spreadsheet"></i> <span data-key="t-multi-level">Need Assessment</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="sidebarMultilevel">
+                            <ul class="nav nav-sm flex-column">
+                                
+                                <li class="nav-item">
+                                    <a href="#sidebarAccount" class="nav-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarAccount" data-key="t-level-1.2"> Questions
+                                    </a>
+                                    <div class="collapse menu-dropdown" id="sidebarAccount">
+                                        <ul class="nav nav-sm flex-column">
+                                            <li class="nav-item">
+                                                <a href="{{route('workshop-management.workshop.create')}}" class="nav-link" data-key="t-level-2.1"> Create </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="{{route('workshop-management.workshop.index')}}" class="nav-link" data-key="t-level-2.1"> List </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                
+                                <li class="nav-item">
+                                    <a href="#sidebarAccount" class="nav-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarAccount" data-key="t-level-1.2"> Responses
+                                    </a>
+                                    <div class="collapse menu-dropdown" id="sidebarAccount">
+                                        <ul class="nav nav-sm flex-column">
+                                            <li class="nav-item">
+                                                <a href="{{route('workshop-management.trainer.create')}}" class="nav-link" data-key="t-level-2.1"> List </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="#sidebarAccount" class="nav-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarAccount" data-key="t-level-1.2"> Ranges
+                                    </a>
+                                    <div class="collapse menu-dropdown" id="sidebarAccount">
+                                        <ul class="nav nav-sm flex-column">
+                                            <li class="nav-item">
+                                                <a href="{{route('workshop-management.workshop-request.index')}}" class="nav-link" data-key="t-level-2.1"> Create </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="{{route('workshop-management.trainer.index')}}" class="nav-link" data-key="t-level-2.1"> List </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
                         <a href="{{route('innovation-management.innovation.index')}}" class="nav-link" data-key="t-level-2.1">
                             <i class=" bx bx-bulb"></i> <span data-key="t-multi-level">Innovations</span>
                         </a>
