@@ -10,10 +10,11 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Services\TeacherService;
 use App\Services\WorkshopService;
-use App\Services\WorkshopRequestService;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use App\Services\WorkshopRequestService;
 
 class WorkshopPageController extends Controller
 {
@@ -46,9 +47,29 @@ class WorkshopPageController extends Controller
 
         $logged_in_teacher = get_current_teacher() ? get_current_teacher() : get_empty_teacher();
 
-        $batches = Batch::where('workshop_id', $workshop_id)->get();
-        
-        return view('website.workshops.batches', compact('batches', 'workshop', 'logged_in_teacher'));
+        $batches = Batch::where('workshop_id', $workshop_id)->where('start_date', '>', \Carbon\Carbon::Today())->get();
+
+        $alreday_registered = [
+            'status' => false,
+            'batch' => 0
+        ];
+
+        if($logged_in_teacher->workshops->count() > 0){
+
+            foreach($logged_in_teacher->workshops as $registered_workshop){
+                
+                if($registered_workshop->id == $workshop->id ){
+
+                    $alreday_registered['status'] = true;
+
+                    $alreday_registered['batch'] = $registered_workshop->pivot->batch_id;
+
+                }
+            }
+
+        }
+
+        return view('website.workshops.batches', compact('batches', 'workshop', 'logged_in_teacher', 'alreday_registered'));
 
     }
 
@@ -76,6 +97,7 @@ class WorkshopPageController extends Controller
             'amount'   => (int) $amount,
             'teacher'    => $teacher,
             'workshop' => $workshop,
+            'batch' => $request->batchID,
             'type' => 'Workshop',
         ]), 'payment_id' => $payment_id]);
 
@@ -206,7 +228,7 @@ class WorkshopPageController extends Controller
         $content = curl_exec($handle );
 
         $code = curl_getinfo($handle, CURLINFO_HTTP_CODE);
-
+    
         try{
 
             $status = '';
@@ -220,12 +242,12 @@ class WorkshopPageController extends Controller
                 $data_details = json_decode($json_data->details);
 
                 $teacher = $this->teacher_service->find($data_details->teacher->id);
-                dd($teacher);
+                
                 $workshop = Workshop::find($data_details->workshop->id);
+
+                $batch_id = $data_details->batch;
                 //-------------
-                $teacher->workshops()->attach($data_details->workshop->id, ['created_at' => Carbon::now()]);
-
-
+                $teacher->workshops()->attach($data_details->workshop->id, ['created_at' => Carbon::now(), 'batch_id' => $batch_id]);
 
                 $payment = new Payment();
 
@@ -243,7 +265,7 @@ class WorkshopPageController extends Controller
 
                 $request->session()->regenerate();
 
-                return redirect()->route('website.workshops.all');
+                return redirect()->route('website.workshops.batches', $workshop->id)->with('success', true);
 
             } else{
 

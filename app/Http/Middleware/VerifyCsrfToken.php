@@ -14,5 +14,6 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         '/sslcom/packagepurchase/complete',
         '/sslcom/coursepurchase/complete',
+        '/sslcom/workshoppurchase/complete'
     ];
 }
