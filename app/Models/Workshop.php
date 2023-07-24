@@ -44,6 +44,6 @@ class Workshop extends Model
 
     public function teachers()
     {
-        return $this->belongsToMany(Teacher::class, 'workshop_teachers', 'workshop_id', 'teacher_id');
+        return $this->belongsToMany(Teacher::class, 'workshop_teachers', 'workshop_id', 'teacher_id')->withPivot('batch_id');
     }
 }
