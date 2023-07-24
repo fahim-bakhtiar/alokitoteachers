@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 21, 2023 at 07:39 PM
+-- Generation Time: Jul 24, 2023 at 11:40 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.20
 
@@ -962,7 +962,98 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (40, '2023_07_09_122504_alter_workshops_table', 8),
 (42, '2023_07_09_123147_create_batches_table', 9),
 (43, '2023_07_12_211811_create_workshop_teachers_table', 10),
-(44, '2023_07_20_161504_create_workshop_requests_table', 11);
+(44, '2023_07_20_161504_create_workshop_requests_table', 11),
+(45, '2023_07_23_152954_create_need_assessment_questions_table', 12),
+(46, '2023_07_23_153501_create_need_assessment_ranges_table', 12),
+(47, '2023_07_23_154001_create_need_assessment_responses_table', 12);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `need_assessment_questions`
+--
+
+CREATE TABLE `need_assessment_questions` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `question` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `strongly_disagree` tinyint(4) NOT NULL,
+  `disagree` tinyint(4) NOT NULL,
+  `neutral` tinyint(4) NOT NULL,
+  `agree` tinyint(4) NOT NULL,
+  `strongly_agree` tinyint(4) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `need_assessment_questions`
+--
+
+INSERT INTO `need_assessment_questions` (`id`, `question`, `strongly_disagree`, `disagree`, `neutral`, `agree`, `strongly_agree`, `created_at`, `updated_at`) VALUES
+(1, 'I am comfortable to explain a topic in more than one ways.', 1, 2, 3, 4, 5, '2023-07-24 03:59:37', '2023-07-24 03:59:37'),
+(2, 'I can answer all questions my students ask related to my teaching topic.', 1, 2, 3, 4, 5, '2023-07-24 03:59:58', '2023-07-24 03:59:58'),
+(3, 'Solving problems can get students confused and distracted them from the main topic.', 5, 4, 3, 2, 1, '2023-07-24 04:01:24', '2023-07-24 04:01:24'),
+(4, 'I believe using hands-on activities make my class chaotic.', 5, 4, 3, 2, 1, '2023-07-24 08:08:45', '2023-07-24 08:08:45');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `need_assessment_ranges`
+--
+
+CREATE TABLE `need_assessment_ranges` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `min` int(11) NOT NULL,
+  `max` int(11) NOT NULL,
+  `course_ids` text COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '[]',
+  `workshop_ids` text COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '[]',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `need_assessment_ranges`
+--
+
+INSERT INTO `need_assessment_ranges` (`id`, `min`, `max`, `course_ids`, `workshop_ids`, `created_at`, `updated_at`) VALUES
+(1, 6, 10, '[\"19\",\"25\",\"29\"]', '[\"3\",\"4\"]', '2023-07-24 05:02:09', '2023-07-24 05:02:09'),
+(2, 11, 15, '[\"30\",\"32\",\"33\"]', '[\"3\",\"4\"]', '2023-07-24 05:02:23', '2023-07-24 05:02:23'),
+(3, 16, 20, '[\"35\",\"21\",\"28\"]', '[\"3\",\"4\"]', '2023-07-24 05:02:51', '2023-07-24 05:02:51'),
+(4, 1, 4, '[\"31\",\"36\"]', '[\"4\"]', '2023-07-24 05:24:19', '2023-07-24 05:24:19');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `need_assessment_responses`
+--
+
+CREATE TABLE `need_assessment_responses` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `teacher_id` int(10) UNSIGNED NOT NULL,
+  `need_assessment_question_id` int(10) UNSIGNED NOT NULL,
+  `answer` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `points` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `need_assessment_responses`
+--
+
+INSERT INTO `need_assessment_responses` (`id`, `teacher_id`, `need_assessment_question_id`, `answer`, `points`, `created_at`, `updated_at`) VALUES
+(1, 7838, 1, 'Strongly Agree', 5, '2023-07-24 08:08:45', '2023-07-24 08:08:45'),
+(2, 7838, 2, 'Strongly Agree', 5, '2023-07-24 08:08:45', '2023-07-24 08:08:45'),
+(3, 7838, 3, 'Strongly Disagree', 5, '2023-07-24 08:08:45', '2023-07-24 08:08:45'),
+(4, 7838, 4, 'Strongly Disagree', 5, '2023-07-24 08:08:45', '2023-07-24 08:08:45'),
+(5, 7839, 1, 'Agree', 4, '2023-07-24 08:08:45', '2023-07-24 08:08:45'),
+(6, 7839, 2, 'Agree', 4, '2023-07-24 08:08:45', '2023-07-24 08:08:45'),
+(7, 7839, 3, 'Disagree', 4, '2023-07-24 08:08:45', '2023-07-24 08:08:45'),
+(8, 7839, 4, 'Disagree', 4, '2023-07-24 08:08:45', '2023-07-24 08:08:45'),
+(9, 7836, 1, 'Neutral', 3, '2023-07-24 08:08:45', '2023-07-24 08:08:45'),
+(10, 7836, 2, 'Neutral', 3, '2023-07-24 08:08:45', '2023-07-24 08:08:45'),
+(11, 7836, 3, 'Neutral', 3, '2023-07-24 08:08:45', '2023-07-24 08:08:45'),
+(12, 7836, 4, 'Neutral', 3, '2023-07-24 08:08:45', '2023-07-24 08:08:45');
 
 -- --------------------------------------------------------
 
@@ -8917,6 +9008,26 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `need_assessment_questions`
+--
+ALTER TABLE `need_assessment_questions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `need_assessment_ranges`
+--
+ALTER TABLE `need_assessment_ranges`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `need_assessment_responses`
+--
+ALTER TABLE `need_assessment_responses`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `need_assessment_responses_teacher_id_foreign` (`teacher_id`),
+  ADD KEY `need_assessment_responses_need_assessment_question_id_foreign` (`need_assessment_question_id`);
+
+--
 -- Indexes for table `packages`
 --
 ALTER TABLE `packages`
@@ -9147,7 +9258,25 @@ ALTER TABLE `lesson_plans`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
+-- AUTO_INCREMENT for table `need_assessment_questions`
+--
+ALTER TABLE `need_assessment_questions`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `need_assessment_ranges`
+--
+ALTER TABLE `need_assessment_ranges`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `need_assessment_responses`
+--
+ALTER TABLE `need_assessment_responses`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `packages`
@@ -9305,6 +9434,13 @@ ALTER TABLE `innovations`
 --
 ALTER TABLE `lessons`
   ADD CONSTRAINT `lessons_lessonplan_id_foreign` FOREIGN KEY (`lessonplan_id`) REFERENCES `lesson_plans` (`id`);
+
+--
+-- Constraints for table `need_assessment_responses`
+--
+ALTER TABLE `need_assessment_responses`
+  ADD CONSTRAINT `need_assessment_responses_need_assessment_question_id_foreign` FOREIGN KEY (`need_assessment_question_id`) REFERENCES `need_assessment_questions` (`id`),
+  ADD CONSTRAINT `need_assessment_responses_teacher_id_foreign` FOREIGN KEY (`teacher_id`) REFERENCES `teachers` (`id`);
 
 --
 -- Constraints for table `payments`
