@@ -267,7 +267,7 @@
                                     <div class="collapse menu-dropdown" id="sidebarAccount">
                                         <ul class="nav nav-sm flex-column">
                                             <li class="nav-item">
-                                                <a href="{{route('workshop-management.trainer.create')}}" class="nav-link" data-key="t-level-2.1"> List </a>
+                                                <a href="{{route('need-assessment.response.index')}}" class="nav-link" data-key="t-level-2.1"> List </a>
                                             </li>
                                         </ul>
                                     </div>

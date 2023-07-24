@@ -73,5 +73,12 @@ class NeedAssessmentController extends Controller
         return redirect()->route('need-assessment.range.create')->with(['success' => 'Range Created Successfully !']);
     }
 
+    public function responseList()
+    {
+        $responses = $this->need_assessment_service->responseList();
+
+        return view('admin.dashboard.need-assessment.response.index', compact('responses'));
+    }
+
 
 }

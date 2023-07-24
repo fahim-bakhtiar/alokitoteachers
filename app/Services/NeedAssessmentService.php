@@ -6,6 +6,8 @@ use App\Models\Course;
 use App\Models\Workshop;
 use App\Models\NeedAssessmentQuestion;
 use App\Models\NeedAssessmentRange;
+use App\Models\NeedAssessmentResponse;
+use DB;
 
 class NeedAssessmentService
 {
@@ -78,6 +80,22 @@ class NeedAssessmentService
         }
 
         return $ranges;
+    }
+
+    public function responseList()
+    {
+        $responses = NeedAssessmentResponse::join('teachers as t', 't.id', '=', 'need_assessment_responses.teacher_id')
+        ->select(
+
+            'need_assessment_responses.id',
+            't.first_name as name',
+            DB::raw('SUM(points) as total_points')
+        )
+        ->groupBy('need_assessment_responses.teacher_id')
+        ->orderBy('need_assessment_responses.created_at', 'desc')
+        ->get();
+
+        return $responses;
     }
 
     
