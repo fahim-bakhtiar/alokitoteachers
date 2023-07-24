@@ -77,7 +77,21 @@ class NeedAssessmentController extends Controller
     {
         $responses = $this->need_assessment_service->responseList();
 
+        foreach($responses as $response)
+        {
+            $response->view_responses_link = route('need-assessment.responses.individual', $response->teacher_id);
+        }
+
         return view('admin.dashboard.need-assessment.response.index', compact('responses'));
+    }
+
+    public function individualResponses($teacher_id)
+    {
+        $individual_responses = $this->need_assessment_service->individualResponses($teacher_id);
+
+        $teacher = $this->need_assessment_service->findTeacher($teacher_id);
+
+        return view('admin.dashboard.need-assessment.response.individual-responses', compact('individual_responses', 'teacher'));
     }
 
 

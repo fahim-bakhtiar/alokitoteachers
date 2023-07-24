@@ -330,6 +330,7 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin/dashboard'], function(
     Route::get('need-assessment/range/create', [NeedAssessmentController::class, 'createRange'])->name('need-assessment.range.create');
     Route::post('need-assessment/range/store', [NeedAssessmentController::class, 'storeRange'])->name('need-assessment.range.store');
     Route::get('need-assessment/response/index', [NeedAssessmentController::class, 'responseList'])->name('need-assessment.response.index');
+    Route::get('need-assessment/responses/individual/{teacher_id}', [NeedAssessmentController::class, 'individualResponses'])->name('need-assessment.responses.individual');
 
     // Lesson
     Route::get('/resource-management/lesson/create/{id}', [LessonController::class, 'lesson_create_form'])->name('resource-management.lesson.create');

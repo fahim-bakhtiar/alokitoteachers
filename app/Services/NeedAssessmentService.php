@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Course;
 use App\Models\Workshop;
+use App\Models\Teacher;
 use App\Models\NeedAssessmentQuestion;
 use App\Models\NeedAssessmentRange;
 use App\Models\NeedAssessmentResponse;
@@ -88,6 +89,7 @@ class NeedAssessmentService
         ->select(
 
             'need_assessment_responses.id',
+            't.id as teacher_id',
             't.first_name as name',
             DB::raw('SUM(points) as total_points')
         )
@@ -96,6 +98,28 @@ class NeedAssessmentService
         ->get();
 
         return $responses;
+    }
+
+    public function individualResponses($teacher_id)
+    {
+        $individual_responses = NeedAssessmentResponse::join('need_assessment_questions as naq', 'naq.id', '=', 'need_assessment_responses.need_assessment_question_id')
+        ->select(
+
+            'naq.id',
+            'naq.question',
+            'need_assessment_responses.answer'
+
+        )
+        ->where('need_assessment_responses.teacher_id', '=', $teacher_id)
+        ->orderBy('naq.id', 'asc')
+        ->get();
+
+        return $individual_responses;
+    }
+
+    public function findTeacher($teacher_id)
+    {
+        return Teacher::find($teacher_id);
     }
 
     

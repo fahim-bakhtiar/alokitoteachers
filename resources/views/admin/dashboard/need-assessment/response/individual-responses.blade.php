@@ -14,7 +14,7 @@
 
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
 
-                <h4 class="mb-sm-0">Response List</h4>
+                <h4 class="mb-sm-0">Individual Responses <span class="text-muted">({{ $teacher->first_name }})</span></h4>
 
                 <div class="page-title-right">
 
@@ -22,7 +22,9 @@
 
                         <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
 
-                        <li class="breadcrumb-item active">Response List</li>
+                        <li class="breadcrumb-item"><a href="{{route('need-assessment.response.index')}}">Response List</a></li>
+
+                        <li class="breadcrumb-item active">Individual Responses</li>
 
                     </ol>
 
@@ -75,42 +77,42 @@ if (document.getElementById("table-gridjs"))
                 })
             },
             {
-                name: 'Teacher Name',
+                name: 'Question',
                 data: (function (row) {
 
-                    return gridjs.html(`<span>${row.name}</span>`);
+                    return gridjs.html(`<span>${row.question}</span>`);
                     
                 })
             },
             {
-                name: 'Total Points',
+                name: 'answer',
                 data: (function (row) {
 
-                    return gridjs.html(`<span>${row.total_points}</span>`);
+                    return gridjs.html(`<span>${row.answer}</span>`);
                     
                 })
             },
-            {
-                name: 'Actions',
-                data: (function (row) {
+            // {
+            //     name: 'Actions',
+            //     data: (function (row) {
 
-                    return gridjs.html(`
+            //         return gridjs.html(`
 
-                        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Select</button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="${row.view_responses_link}">View Responses</a></li>
-                        </ul>
+            //             <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Select</button>
+            //             <ul class="dropdown-menu">
+            //                 <li><a class="dropdown-item" href="${row.view_responses_link}">View Responses</a></li>
+            //             </ul>
                     
-                    `);
-                })
-            }
+            //         `);
+            //     })
+            // }
         ],
         pagination: {
             limit: 10
         },
         sort: true,
         search: true,
-        data: @json($responses->toArray())
+        data: @json($individual_responses->toArray())
     }).render(document.getElementById("table-gridjs"));
 
 
