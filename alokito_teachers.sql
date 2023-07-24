@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 24, 2023 at 11:40 AM
+-- Generation Time: Jul 24, 2023 at 07:12 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.20
 
@@ -1042,10 +1042,6 @@ CREATE TABLE `need_assessment_responses` (
 --
 
 INSERT INTO `need_assessment_responses` (`id`, `teacher_id`, `need_assessment_question_id`, `answer`, `points`, `created_at`, `updated_at`) VALUES
-(1, 7838, 1, 'Strongly Agree', 5, '2023-07-24 08:08:45', '2023-07-24 08:08:45'),
-(2, 7838, 2, 'Strongly Agree', 5, '2023-07-24 08:08:45', '2023-07-24 08:08:45'),
-(3, 7838, 3, 'Strongly Disagree', 5, '2023-07-24 08:08:45', '2023-07-24 08:08:45'),
-(4, 7838, 4, 'Strongly Disagree', 5, '2023-07-24 08:08:45', '2023-07-24 08:08:45'),
 (5, 7839, 1, 'Agree', 4, '2023-07-24 08:08:45', '2023-07-24 08:08:45'),
 (6, 7839, 2, 'Agree', 4, '2023-07-24 08:08:45', '2023-07-24 08:08:45'),
 (7, 7839, 3, 'Disagree', 4, '2023-07-24 08:08:45', '2023-07-24 08:08:45'),
@@ -1053,7 +1049,15 @@ INSERT INTO `need_assessment_responses` (`id`, `teacher_id`, `need_assessment_qu
 (9, 7836, 1, 'Neutral', 3, '2023-07-24 08:08:45', '2023-07-24 08:08:45'),
 (10, 7836, 2, 'Neutral', 3, '2023-07-24 08:08:45', '2023-07-24 08:08:45'),
 (11, 7836, 3, 'Neutral', 3, '2023-07-24 08:08:45', '2023-07-24 08:08:45'),
-(12, 7836, 4, 'Neutral', 3, '2023-07-24 08:08:45', '2023-07-24 08:08:45');
+(12, 7836, 4, 'Neutral', 3, '2023-07-24 08:08:45', '2023-07-24 08:08:45'),
+(25, 7835, 1, 'strongly_agree', 5, '2023-07-24 16:09:28', '2023-07-24 16:09:28'),
+(26, 7835, 2, 'neutral', 3, '2023-07-24 16:09:28', '2023-07-24 16:09:28'),
+(27, 7835, 3, 'neutral', 3, '2023-07-24 16:09:28', '2023-07-24 16:09:28'),
+(28, 7835, 4, 'disagree', 4, '2023-07-24 16:09:28', '2023-07-24 16:09:28'),
+(29, 7838, 1, 'agree', 4, '2023-07-24 17:12:03', '2023-07-24 17:12:03'),
+(30, 7838, 2, 'agree', 4, '2023-07-24 17:12:03', '2023-07-24 17:12:03'),
+(31, 7838, 3, 'agree', 2, '2023-07-24 17:12:03', '2023-07-24 17:12:03'),
+(32, 7838, 4, 'disagree', 4, '2023-07-24 17:12:03', '2023-07-24 17:12:03');
 
 -- --------------------------------------------------------
 
@@ -8682,11 +8686,11 @@ INSERT INTO `teachers` (`id`, `first_name`, `last_name`, `username`, `email`, `p
 (7832, 'Jannatul Ferdous', NULL, 'rismu', 'rismujannat@gmail.com', '01955973349', '$2y$10$ZjHqonCQO6bC.lYmxO0Nuu8AnPkluz4xLcoqn1LkXtleXibuihTpm', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-06-15 12:56:08', '2023-06-15 12:56:08', 0, NULL),
 (7833, 'মোঃ হাবিবুর রহমান', NULL, 'habiburpali', 'habiburpali@gmail.com', '01823660266', '$2y$10$8dGrEKho18tdA1IBowDBb.UCs0fcKUbhi//Xw7IJ2XQzEUdGECY8q', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-06-15 12:56:08', '2023-06-15 12:56:08', 0, NULL),
 (7834, 'Lutfay Rahnuma', NULL, 'LutfayRahnuma', 'rahnumalutfay@ymail.com', '01771103927', '$2y$10$.BXlBH34AeQ68sbgGetXz.vtWRt2pD37mMrGKlywbAXz3tvojLE8.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-06-15 12:56:08', '2023-06-15 12:56:08', 0, NULL),
-(7835, 'Ambia Khatun', NULL, 'Ambia', 'ambia.joye03@gmail.com', '01825388319', '$2y$10$TehLFw.4w1RsLXkwCtR2Pe3yrxvxOLnNpJ7.tWZMgTsChuISzavUK', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-06-15 12:56:08', '2023-06-15 12:56:08', 0, NULL),
-(7836, 'Tanima Tajrin', NULL, 'Tanima', 'tanimatajrin475@gmail.com', '01631315012', '$2y$10$1NoIrFsnK6N06WavenGLreeo.Ou/AewTGboD0hipLyjW5XppRTHyG', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-06-15 12:56:08', '2023-06-15 12:56:08', 0, NULL),
+(7835, 'Ambia Khatun', NULL, 'Ambia', 'ambia.joye03@gmail.com', '01825388319', '$2y$10$o.Rxmj7t9Tq3lJ1XUqKnV.BRtFFlUiyjE.ShAjIgZwigLFOpGakRm', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-06-15 12:56:08', '2023-06-15 12:56:08', 0, NULL),
+(7836, 'Tanima Tajrin', NULL, 'Tanima', 'tanimatajrin475@gmail.com', '01631315012', '$2y$10$o.Rxmj7t9Tq3lJ1XUqKnV.BRtFFlUiyjE.ShAjIgZwigLFOpGakRm', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-06-15 12:56:08', '2023-06-15 12:56:08', 0, NULL),
 (7837, 'Mehzabin Alam Tantomoni', NULL, 'Mehzabin 96', 'mdmahfujhossain90@gmail.com', '01754940561', '$2y$10$aMdvh7ne1I5X3j7VqF1lgOjSkY35KRcuf4oYcF8jtiw2EHzNgKNn.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-06-15 12:56:08', '2023-06-15 12:56:08', 0, NULL),
-(7838, 'Akhi Akter', NULL, 'Akhi94', 'isratakhi94@gmail.com', '01794612797', '$2y$10$c7n54QMLQHGr/K.z7FwsZuo/ek9a7L8s4DMAT4QWRjNP9gAh6NCtG', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-06-15 12:56:08', '2023-06-15 12:56:08', 0, NULL),
-(7839, 'Tahia Rafa Alam', NULL, 'Tahia rafa', 'tahiarafa@gmail.com', '01627861980', '$2y$10$8b9xuqzeOjlm/pmxuUzREOQsBXH/QTiorYwlZjrewuZKojyAifl72', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-06-15 12:56:08', '2023-06-15 12:56:08', 0, NULL),
+(7838, 'Akhi Akter', NULL, 'Akhi94', 'isratakhi94@gmail.com', '01794612797', '$2y$10$o.Rxmj7t9Tq3lJ1XUqKnV.BRtFFlUiyjE.ShAjIgZwigLFOpGakRm', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-06-15 12:56:08', '2023-06-15 12:56:08', 0, NULL),
+(7839, 'Tahia Rafa Alam', NULL, 'Tahia rafa', 'tahiarafa@gmail.com', '01627861980', '$2y$10$J6hGAl2tHpruzRZ7mSZIfuuQPIqE.uHYi48tVkBc5X4zTKqJsebtC', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-06-15 12:56:08', '2023-06-15 12:56:08', 0, NULL),
 (7840, 'Dawn Ebert', NULL, 'Declan_Mayer', 'Leif.Rolfson72@yahoo.com', '18536376187', '$2y$10$n2xY1oKvoEI6JIo2pHmDQ.I38wOT4EPuhCq57bQ7dLE5nYzvj5Isq', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-06-15 12:56:08', '2023-06-15 12:56:08', 0, NULL),
 (7841, 'Shemul Akter', NULL, 'Shemu', 'shemulakter55@gmail.com', '01740996440', '$2y$10$nc9g13Mk0UpmMFImQtFed.yEToX/Q4.HlSTG6Kaq.MiBXEs1xMhpa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-06-15 12:56:08', '2023-06-15 12:56:08', 0, NULL),
 (7842, 'Md Anwar Hossen', NULL, 'anwar', 'anwar.alokito16@gmail.com', '01822974858', '$2y$10$uZap4Hlaoy7C6tF5v3L8gOYsL1o0qvmQOTNErUxQWXPlfPDTTeZrC', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-06-15 12:56:08', '2023-06-15 12:56:08', 0, NULL),
@@ -9276,7 +9280,7 @@ ALTER TABLE `need_assessment_ranges`
 -- AUTO_INCREMENT for table `need_assessment_responses`
 --
 ALTER TABLE `need_assessment_responses`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `packages`
