@@ -43,5 +43,35 @@ class NeedAssessmentController extends Controller
         return redirect()->route('need-assessment.question.create')->with(['success' => 'Question Created Successfully !']);
     }
 
+    public function rangeList()
+    {
+        $ranges = $this->need_assessment_service->rangeList();
+
+        return view('admin.dashboard.need-assessment.range.index', compact('ranges'));
+    }
+
+    public function createRange()
+    {
+        $courses = $this->need_assessment_service->courseDropdown();
+
+        $workshops = $this->need_assessment_service->workshopDropdown();
+
+        return view('admin.dashboard.need-assessment.range.create', compact('courses', 'workshops'));
+    }
+
+    public function storeRange(Request $request)
+    {
+        $request->validate([
+            'min' => 'required | numeric',
+            'max' => 'required | numeric',
+            'course_ids' => 'required | array',
+            'workshop_ids' => 'required | array'
+        ]);
+
+        $this->need_assessment_service->storeRange($request);
+
+        return redirect()->route('need-assessment.range.create')->with(['success' => 'Range Created Successfully !']);
+    }
+
 
 }

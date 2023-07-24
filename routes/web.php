@@ -326,6 +326,9 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin/dashboard'], function(
     Route::get('need-assessment/question/index', [NeedAssessmentController::class, 'questionList'])->name('need-assessment.question.index');
     Route::get('need-assessment/question/create', [NeedAssessmentController::class, 'createQuestion'])->name('need-assessment.question.create');
     Route::post('need-assessment/question/store', [NeedAssessmentController::class, 'storeQuestion'])->name('need-assessment.question.store');
+    Route::get('need-assessment/range/index', [NeedAssessmentController::class, 'rangeList'])->name('need-assessment.range.index');
+    Route::get('need-assessment/range/create', [NeedAssessmentController::class, 'createRange'])->name('need-assessment.range.create');
+    Route::post('need-assessment/range/store', [NeedAssessmentController::class, 'storeRange'])->name('need-assessment.range.store');
 
     // Lesson
     Route::get('/resource-management/lesson/create/{id}', [LessonController::class, 'lesson_create_form'])->name('resource-management.lesson.create');
