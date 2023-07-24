@@ -11,13 +11,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\web\Admin\AdminAuthController;
 use App\Http\Controllers\web\Website\AuthPageController;
 use App\Http\Controllers\web\Website\HomePageController;
-use App\Http\Controllers\web\Teacher\TeacherAuthController;
 use App\Http\Controllers\web\Website\CoursesPageController;
+use App\Http\Controllers\web\Teacher\TeacherAuthController;
 use App\Http\Controllers\web\Website\PackagesPageController;
 use App\Http\Controllers\web\Website\WorkshopPageController;
 use App\Http\Controllers\web\Teacher\TeacherAccountController;
 use App\Http\Controllers\web\Website\InnovationPageController;
 use App\Http\Controllers\web\Teacher\TeacherInnovationController;
+use App\Http\Controllers\web\Website\NeedAssessmentPageController;
 use App\Http\Controllers\web\Teacher\TeacherSubscriptionController;
 use App\Http\Controllers\web\Admin\CourseManagement\CourseController;
 use App\Http\Controllers\web\Admin\UserManagement\AdminCrudController;
@@ -32,10 +33,10 @@ use App\Http\Controllers\web\Admin\WorkshopManagement\WorkshopController;
 use App\Http\Controllers\web\Admin\ResourceManagement\DemoClassController;
 use App\Http\Controllers\web\Admin\ResourceManagement\WorksheetController;
 use App\Http\Controllers\web\Admin\ResourceManagement\LessonPlanController;
-use App\Http\Controllers\web\Admin\InnovationManagement\InnovationController;
-use App\Http\Controllers\web\Admin\WorkshopManagement\WorkshopTestimonialController;
-use App\Http\Controllers\web\Admin\WorkshopManagement\WorkshopRequestController;
 use App\Http\Controllers\web\Admin\NeedAssessment\NeedAssessmentController;
+use App\Http\Controllers\web\Admin\InnovationManagement\InnovationController;
+use App\Http\Controllers\web\Admin\WorkshopManagement\WorkshopRequestController;
+use App\Http\Controllers\web\Admin\WorkshopManagement\WorkshopTestimonialController;
 
 
 
@@ -166,7 +167,11 @@ Route::group(['middleware' => 'teacher', 'prefix' => 'account/teacher'], functio
     //WORKSHOP
 
     Route::post('/workshops/{workshopID}/teacher/{teacherID}/purchase', [WorkshopPageController::class, 'purchase_workshop'])->name('workshop.teacher.purchase');
-    
+
+
+    // NEED ASSESSMENT
+    Route::get('need-assessment', [NeedAssessmentPageController::class, 'needAssessmentView'])->name('need-assessment.view');
+    Route::post('need-assessment-store', [NeedAssessmentPageController::class, 'needAssessmentStore'])->name('need-assessment.store');
 
 
 });

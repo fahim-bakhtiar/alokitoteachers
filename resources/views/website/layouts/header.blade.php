@@ -47,6 +47,7 @@
                     <li class="menu-item"><a href="{{route('website.workshops.all')}}">Workshops</a></li>
                     <!-- <li class="menu-item"><a href="{{route('website.packages.all')}}">Packages</a></li> -->
                     @if(auth()->guard('web-teacher')->check())
+                    <li class="menu-item"><a href="{{ route('need-assessment.view') }}">Need Assessment</a></li>
                     <li class="menu-item" style="background-color: #004259;border-radius: 10px;"><a href="{{route('teacher.profile')}}" style="color:#fff">My Profile</a></li>
                     @endif
                 </ul>

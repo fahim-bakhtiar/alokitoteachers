@@ -122,5 +122,36 @@ class NeedAssessmentService
         return Teacher::find($teacher_id);
     }
 
+    public function getQuestions()
+    {
+        return NeedAssessmentQuestion::select('id', 'question')->get();
+    }
+
+    public function needAssessmentStore($request)
+    {
+        $responses = NeedAssessmentResponse::where('teacher_id', '=', get_current_teacher()->id)->get();
+
+        foreach($responses as $response)
+        {
+            $response->delete();
+        }
+
+        $questions = NeedAssessmentQuestion::all();
+
+        foreach($questions as $question)
+        {
+            $answer = $request->input('question-' . $question->id);
+
+            $need_assessment_response = new NeedAssessmentResponse();
+
+            $need_assessment_response->teacher_id = get_current_teacher()->id;
+            $need_assessment_response->need_assessment_question_id = $question->id;
+            $need_assessment_response->answer = $answer;
+            $need_assessment_response->points = $question[$answer];
+
+            $need_assessment_response->save();
+        }
+    }
+
     
 }
