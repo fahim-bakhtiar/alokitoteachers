@@ -129,12 +129,17 @@ class NeedAssessmentService
 
     public function needAssessmentStore($request)
     {
+        // REMOVING EXISTING RESPONSES IF ANY
         $responses = NeedAssessmentResponse::where('teacher_id', '=', get_current_teacher()->id)->get();
 
         foreach($responses as $response)
         {
             $response->delete();
         }
+
+
+        // STORING RESPONSES
+        $total_points = 0;
 
         $questions = NeedAssessmentQuestion::all();
 
@@ -150,7 +155,69 @@ class NeedAssessmentService
             $need_assessment_response->points = $question[$answer];
 
             $need_assessment_response->save();
+
+            $total_points += $question[$answer];
         }
+
+
+        // FINDING THE RANGE
+        $course_ids = $workshop_ids = null;
+
+        $ranges = NeedAssessmentRange::all();
+
+        foreach($ranges as $range)
+        {
+            if($total_points >= $range->min && $total_points <= $range->max)
+            {
+                $course_ids = json_decode($range->course_ids);
+
+                $workshop_ids = json_decode($range->workshop_ids);
+
+                break;
+            }
+        }
+
+
+        // EXCLUDING ALREADY TAKEN COURSES
+        $taken_courses = get_current_teacher()->courses->pluck('id')->toArray();
+
+        foreach($taken_courses as $taken_course_id)
+        {
+            $key = array_search($taken_course_id, $course_ids);
+
+            if(is_numeric($key))
+            {
+                unset($course_ids[$key]);
+            }
+        }
+        
+        $course_ids = array_values($course_ids);
+
+
+        // EXLCUDING ALREADY TAKEN WORKSHOPS
+        $taken_workshops = get_current_teacher()->workshops->pluck('id')->toArray();
+
+        foreach($taken_workshops as $taken_workshop_id)
+        {
+            $key = array_search($taken_workshop_id, $workshop_ids);
+
+            if(is_numeric($key))
+            {
+                unset($workshop_ids[$key]);
+            }
+        }
+        
+        $workshop_ids = array_values($workshop_ids);
+
+
+        $courses = Course::whereIn('id', $course_ids)->get();
+
+        $workshops = Workshop::whereIn('id', $workshop_ids)->get();
+
+        return [
+            'courses' => $courses,
+            'workshops' => $workshops
+        ];
     }
 
     

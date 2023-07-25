@@ -24,9 +24,13 @@ class NeedAssessmentPageController extends Controller
 
     public function needAssessmentStore(Request $request)
     {
-        $this->need_assessment_service->needAssessmentStore($request);
+        $result = $this->need_assessment_service->needAssessmentStore($request);
 
-        return redirect()->route('need-assessment.view')->with(['success' => 'Responses Submitted Successfully !']);
+        $courses = $result['courses'];
+
+        $workshops = $result['workshops'];
+
+        return view('website.need-assessment.need-assessment-recommendations', compact('courses', 'workshops'));
     }
 
 
