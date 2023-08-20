@@ -31,7 +31,8 @@
 
                         <div class="col-lg-12">
 
-                            <form action="{{ route('need-assessment.store') }}" method="post">
+                            <div class="need-form-box">
+                                <form action="{{ route('need-assessment.store') }}" method="post">
 
                                 @csrf
 
@@ -70,9 +71,12 @@
 
                                 </div>
 
-                                
 
-                            </form>
+
+                                </form>
+                            </div>
+
+                            
                             
                         </div>
                         

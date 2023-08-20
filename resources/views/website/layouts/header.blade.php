@@ -32,46 +32,53 @@
 <header class="header shadow-sm">
     <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-            <div class="header-logo">
-                <a href="{{route('website.homepage')}}" class="logo">
-                    <img src="{{asset_url('website/assets/images/logo.png')}}" alt="logo">
-                </a>
+            <div class="">
+                <div class="header-logo">
+                    <a href="{{route('website.homepage')}}" class="logo">
+                        <img src="{{asset_url('website/assets/images/logo.png')}}" alt="logo">
+                    </a>
+                </div>
             </div>
-            <nav class="primary-menu">
-                <ul class="main-menu d-flex">
-                    <li class="menu-item active"><a href="{{route('website.homepage')}}">Home</a></li>
-                    <!-- <li class="menu-item"><a href="">About Us</a></li> -->
-                    <li class="menu-item"><a href="{{route('website.courses.all')}}">Courses</a></li>
-                    <!-- <li class="menu-item"><a href="resources.html">Resources</a></li> -->
-                    <!-- <li class="menu-item"><a href="{{route('website.innovation.all')}}">Innovations</a></li> -->
-                    <li class="menu-item"><a href="{{route('website.workshops.all')}}">Workshops</a></li>
-                    <!-- <li class="menu-item"><a href="{{route('website.packages.all')}}">Packages</a></li> -->
-                    @if(auth()->guard('web-teacher')->check())
-                    <li class="menu-item"><a href="{{ route('need-assessment.view') }}">Need Assessment</a></li>
-                    <li class="menu-item" style="background-color: #004259;border-radius: 10px;"><a href="{{route('teacher.profile')}}" style="color:#fff">My Profile</a></li>
+
+            <div class="d-flex justify-content-end align-items-center">
+                <nav class="primary-menu">
+                    <ul class="main-menu d-flex">
+                        <li class="menu-item active"><a href="{{route('website.homepage')}}">Home</a></li>
+                        <!-- <li class="menu-item"><a href="">About Us</a></li> -->
+                        <li class="menu-item"><a href="{{route('website.courses.all')}}">Courses</a></li>
+                        <!-- <li class="menu-item"><a href="resources.html">Resources</a></li> -->
+                        <!-- <li class="menu-item"><a href="{{route('website.innovation.all')}}">Innovations</a></li> -->
+                        <li class="menu-item"><a href="{{route('website.workshops.all')}}">Workshops</a></li>
+                        <!-- <li class="menu-item"><a href="{{route('website.packages.all')}}">Packages</a></li> -->
+                        <li class="menu-item"><a href="{{ route('need-assessment.view') }}">Need Assessment</a></li>
+                        @if(auth()->guard('web-teacher')->check())
+                        <li class="menu-item" style="background-color: #004259;border-radius: 10px;"><a href="{{route('teacher.profile')}}" style="color:#fff">My Profile</a></li>
+                        @endif
+                    </ul>
+                </nav>
+                <div class="header-right d-flex align-items-center flex-wrap" style="margin-left:30px;">
+                    @if(!auth()->guard('web-teacher')->check())
+
+                    <a href="{{route('website.auth.signup')}}" class="btn btn-default">Join Us</a>
+
+                    @else
+
+                    <a href="" class="btn btn-default" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt" style="margin-right:8px"></i> Sign out</a>
+
+                    <form id="logout-form" action="{{route('website.auth.teacher.signout')}}" method="POST" style="display: none;">@csrf</form>
+
                     @endif
-                </ul>
-            </nav>
-            <div class="header-right d-flex align-items-center flex-wrap">
-                @if(!auth()->guard('web-teacher')->check())
-
-                <a href="{{route('website.auth.signup')}}" class="btn btn-default">Join Us</a>
-
-                @else
-
-                <a href="" class="btn btn-default" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt" style="margin-right:8px"></i> Sign out</a>
-
-                <form id="logout-form" action="{{route('website.auth.teacher.signout')}}" method="POST" style="display: none;">@csrf</form>
-
-                @endif
-                <div class="nav-icon">
-                    <div class="menu-icon" title="Menu">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                    <div class="nav-icon">
+                        <div class="menu-icon" title="Menu">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
                     </div>
                 </div>
             </div>
+            
+            
         </div>
     </div>
 
@@ -90,7 +97,8 @@
                         <li class="menu-item"><a href="{{route('website.courses.all')}}">Courses</a></li>
                         <!--<li class="menu-item"><a href="resources.html">Resources</a></li>-->
                         <!--<li class="menu-item"><a href="innovations.html">Innovations</a></li>-->
-                        <!--<li class="menu-item"><a href="workshop-registration.html">Workshops</a></li>-->
+                        <li class="menu-item"><a href="{{route('website.workshops.all')}}">Workshops</a></li>
+                        <li class="menu-item"><a href="{{ route('need-assessment.view') }}">Need Assesment</a></li>
                         <!--<li class="menu-item"><a href="">About us</a></li>-->
                         @if(auth()->guard('web-teacher')->check())
                         <li class="menu-item" style="background-color: #004259;border-radius: 10px;"><a href="{{route('teacher.profile')}}" style="color:#fff">My Proile</a></li>

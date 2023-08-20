@@ -856,8 +856,8 @@ header.header ul.main-menu > li > a {
   text-align: center;
 }
 header.header ul.main-menu > li:hover > a, header.header ul.main-menu > li.active > a {
-  color: #4B4DED;
-  font-weight: 600;
+  color: #F29C1F;
+  /* font-weight: 600; */
 }
 header.header .btn-default {
   padding: 0 16px;
@@ -4726,4 +4726,14 @@ span.error {
   padding-top: 50px;
   padding-bottom: 50px;
   background-color: #f6f6f6;
+}
+
+.need-form-box{
+    background-color: #f9f9f9;
+    padding: 50px;
+}
+
+.need-form-box form label{
+    font-weight: 600;
+    margin-bottom: 10px;
 }
